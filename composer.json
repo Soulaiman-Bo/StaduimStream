@@ -1,0 +1,13 @@
+{
+    "name": "youcode/staduimstream",
+    "autoload": {
+            "classmap": ["classes", "controller", "model", ""]
+    },
+    "authors": [
+        {
+            "name": "soulaiman-bo",
+            "email": "bouhlal.soulaiman@gmail.com"
+        }
+    ],
+    "require": {}
+}

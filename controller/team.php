@@ -1,6 +1,5 @@
 <?php
 
-require_once "model/team.php";
 
 class Team extends Controller
 {
@@ -11,6 +10,7 @@ class Team extends Controller
 		$view = $this->getView();
 		require_once $view;
 	}
+	
 	protected function update()
 	{
 		$id = $_GET['id'];
@@ -111,6 +111,7 @@ class Team extends Controller
 			]);
 		}
 	}
+
 	protected function updateaction()
 	{
 		extract($_POST);
@@ -142,6 +143,7 @@ class Team extends Controller
 			]);
 		}
 	}
+
 	protected function deleteaction()
 	{
 		extract($_POST);

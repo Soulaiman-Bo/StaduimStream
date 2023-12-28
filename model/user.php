@@ -1,6 +1,6 @@
 <?php
 
-class TeamModel extends Model
+class UserModel extends Model
 {
 	public function Index()
 	{

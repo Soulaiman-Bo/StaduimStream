@@ -1,0 +1,4 @@
+node_modules
+/vendor/
+public/assets/dist
+errors.log
