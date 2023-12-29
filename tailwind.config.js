@@ -4,6 +4,7 @@ module.exports = {
             "./views/home/*.php",
             "./views/*.php",
             "./views/user/*.php",
+            "./views/contact/*.php",
           ],
   theme: {
     extend: {},
