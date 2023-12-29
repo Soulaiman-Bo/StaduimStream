@@ -1,0 +1,18 @@
+.my-24{
+    margin-top: 0 !important;
+}
+#button{
+    background-color: #00774d;
+    color:#fff;
+}
+#button:hover{
+    color: #00774d;
+    background-color:#fff;
+    border: #00774d 0.4px solid;
+}
+.lable{
+    color: black !important;
+}
+.text{
+    color: black !important;
+}
