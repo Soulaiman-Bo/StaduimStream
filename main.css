@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Poppins:ital,wght@0,100;1,100&display=swap');
+
+
 .backgroundImage {
     background-image: url('http://staduimstream.test/public/images/hero.png');
   
@@ -16,3 +19,9 @@
       background-image: url('./public/assets/dist/afaaak.png');
       
 } 
+
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+}

@@ -1,0 +1,24 @@
+#signin{
+    background-color:#33B133 !important;
+}
+
+.Signup{
+    padding-top:  4rem;
+    font-size: 7rem !important;
+    line-height: 1 !important;
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.andertitle{
+    color: #000000 !important;
+}
+.form{
+    padding-top: 3rem;
+}
+.links{
+    padding-left: 3rem;
+}
+.py-24{
+    padding-top: 0 !important;
+}
