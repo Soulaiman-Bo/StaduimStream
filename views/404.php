@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>404 Page</title>
   <link rel="stylesheet" href="../public/assets/dist/output.css">
-
 </head>
 
 <body>

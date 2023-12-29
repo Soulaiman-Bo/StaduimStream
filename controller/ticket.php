@@ -2,9 +2,11 @@
 
 class Ticket extends Controller
 {
-    protected function index()
-    {
-        $view = $this->getView();
-        require_once "$view";
-    }
+    
+    public function add(){}
+    public function update(){}
+    public function delete(){}
+    public function show(){}
+
 }
+
