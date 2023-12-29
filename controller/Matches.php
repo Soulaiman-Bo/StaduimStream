@@ -7,4 +7,12 @@ class Matches extends Controller
         $view = $this->getView();
         require_once "$view";
     }
+
+    protected function match()
+    {
+        $view = $this->getView();
+        require_once "$view";
+    }
+
+
 }
