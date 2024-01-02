@@ -1,5 +1,7 @@
 <?php
 
+require_once "classes/SeatsValidation.php";
+
 class Ticket extends Controller
 {
 
@@ -12,9 +14,28 @@ class Ticket extends Controller
     public function delete()
     {
     }
-    public function show()
-    {
+
+    public function showStatsOfSeates() {
+
+        $id = $_GET['id'];
+
+        $seates = $this->count_available_seates( $id);
+
+         if(empty($seates)){
+            http_response_code(400);
+            echo json_encode([
+                "message" => "Match not found"
+            ]);
+            exit;
+        }
+
+        http_response_code(200);
+        echo json_encode([
+            $seates
+        ]);
+
     }
+
 
     public function addaction()
     {
@@ -22,12 +43,13 @@ class Ticket extends Controller
         $validation = new Validation();
 
         try {
-            $validation->key('match_id')->value($_POST['match_id'])->required();
-            $validation->key('user_id')->value($_POST['user_id'])->required();
-            $validation->key('cat1')->value($_POST['1'])->required();
-            $validation->key('cat2')->value($_POST['2'])->required();
-            $validation->key('cat3')->value($_POST['3'])->required();
-            
+            // $validation->key('match_id')->value($_POST['match_id'])->required();
+            // $validation->key('user_id')->value($_POST['user_id'])->required();
+            // $validation->key('cat1')->value($_POST['1'])->required();
+            // $validation->key('cat2')->value($_POST['2'])->required();
+            // $validation->key('cat3')->value($_POST['3'])->required();
+
+
         } catch (Exception $e) {
             error_log("Invalid Input: " . $e->getMessage() . "\n", 3, "errors.log");
 
@@ -36,9 +58,7 @@ class Ticket extends Controller
             echo json_encode([
                 "message" => "Invalid Input: " . $e->getMessage(),
             ]);
-
         }
-
 
         $matchId =  $validation->sanitize($_POST['match_id']);
         $userId =  $validation->sanitize($_POST['user_id']);
@@ -47,9 +67,15 @@ class Ticket extends Controller
         $category_3 =  $validation->sanitize($_POST['3']);
 
 
+        // check availabel tickets
+        $this->check_available_seates($matchId, $category_3, $category_2, $category_1);
+
+
+
         $prefix = $matchId . $userId;
         $serialNumber = uniqid($prefix, true);
         $number_Of_Tickets_Per_Category = array_combine([1, 2, 3], [$category_1, $category_2, $category_3]);
+
 
         $ticketmodel = new TicketModel();
 
@@ -82,14 +108,60 @@ class Ticket extends Controller
         }
     }
 
-    public function check_available_tickets($matchId)
+    private function check_available_seates($matchId, $category_3, $category_2, $category_1)
     {
-        $ticketmodel = new TicketModel();
-        $staduim_seates = $ticketmodel->selectRecords("stadiums", "`capacity`, `vip_seats`, `premuim_seats`, `basic_seats`");
+        // check if seates available 
+        $seates = $this->count_available_seates($matchId);
+
+        try {
+
+            $basic_seates = ($seates['reserved_basic'] + $category_3) <=  $seates['basic'] ? true : throw new SeatsValidation(["category" => "Basic", "seates_left" => $seates['basic'] - $seates['reserved_basic']], "");
+            $premium_seates = ($seates['reserved_premium'] + $category_2) <=  $seates['premium']  ? true : throw new SeatsValidation(["category" => "Premium", "seates_left" => $seates['premium'] - $seates['reserved_premium']], "");
+            $vip_seates = ($seates['reserved_vip'] + $category_1 <=  $seates['vip'])  ? true : throw new SeatsValidation(["category" => "Vip", "seates_left" => $seates['vip'] - $seates['reserved_vip']], "");
+
+        } catch (SeatsValidation $e) {
+
+            error_log( $e->getCustomMessage() . "\n", 3, "errors.log");
+            $message = "Ticket inserted successfully!";
+            http_response_code(200);
+            echo json_encode([
+                "message" =>  $e->getCustomMessage(),
+            ]);
+            exit;
+        }
+    }
+    
+    public function count_available_seates($matcheId)
+    {
 
         $ticketmodel = new TicketModel();
-        $reserved_seates = $ticketmodel->customeSelectQuery(`ticket`, "category, count(category) AS count",  "matche = 1", "category");
+
+        $staduim_seates = $ticketmodel->selectstaduimBasedOnMatchId($matcheId);
+
+        $reserved_seates = $ticketmodel->customeSelectQuery('ticket', "category, count(category) AS count",  "matche = $matcheId", "category");
+
+        $ticketmodel->closeConnection();
+
+        if (empty($staduim_seates)) {
+            http_response_code(400);
+            echo json_encode([
+                "message" => "Match not found"
+            ]);
+            exit;
+        }
+
+        return array(
+            "Match_id" => $staduim_seates[0]['Match_id'],
+            "basic" => $staduim_seates[0]['basic_seats'],
+            "premium" => $staduim_seates[0]['premuim_seats'],
+            "vip" => $staduim_seates[0]['vip_seats'],
+            "reserved_basic" => empty($reserved_seates) ? 0 :   $reserved_seates[2]['count'],
+            "reserved_premium" => empty($reserved_seates) ? 0 : $reserved_seates[1]['count'],
+            "reserved_vip" => empty($reserved_seates) ? 0 : $reserved_seates[0]['count'],
+        );
     }
+
 }
+
 
 // []
