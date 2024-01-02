@@ -11,13 +11,13 @@ class TeamModel extends Model
 	{
 		$sql = "SELECT $columns FROM $table";
 
-		$sql .= " INNER JOIN manager ON teams.manager = manager.id";
+		$sql .= " INNER JOIN manager ON teams.manager = manager.id ORDER BY teams.id DESC ";
 
 		if ($where !== null) {
 			$sql .= " WHERE $where";
 		}
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 
 		// Execute the prepared statement
 		$stmt->execute();
@@ -25,8 +25,8 @@ class TeamModel extends Model
 		// Get the result set
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		// Close the statement
-		$this->pdo = null;
+		$this->closeConnection();
+
 
 		return $result;
 	}
