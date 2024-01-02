@@ -1,5 +1,7 @@
 <?php
 
+require_once '../model/User.php';
+
 class User extends Controller
 {
     public function login()
