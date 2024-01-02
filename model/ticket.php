@@ -23,7 +23,6 @@ class TicketModel extends Model
 			// Get the last inserted ID (if applicable)
 			$lastInsertId = $this->connection->lastInsertId();
 			return $lastInsertId;
-
 		} catch (PDOException $e) {
 			error_log("Database error: " . $e->getMessage() . "\n", 3, "errors.log");
 			echo "Database error: " . $e->getMessage();
@@ -50,11 +49,23 @@ class TicketModel extends Model
 			$sql .= " GROUP BY $goupBy";
 		}
 
+
+
 		$stmt = $this->connection->prepare($sql);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->connection = null;
-
 		return $result;
 	}
+
+	public function selectstaduimBasedOnMatchId($matchId)
+	{
+
+		$sql = "SELECT M.id as Match_id, S.id AS stadium_id, S.capacity, S.vip_seats, S.premuim_seats, S.basic_seats FROM `matche` M join `stadiums` S ON M.stadium = S.id where M.id = $matchId";
+
+		$stmt = $this->connection->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
 }
