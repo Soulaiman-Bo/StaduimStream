@@ -13,10 +13,10 @@ class SeatsValidation extends Exception
     }
 
     public function getCustomMessage(){
-        if($this->parramArray['seates_left'] === 0){
+        if($this->parramArray['seats_left'] === 0){
             return $this->parramArray['category'] . " category is Sold Out";
         }else {
-            return "Invalid Input: Only " . $this->parramArray['seates_left'] . " Tickets Left in The Basic Category";
+            return "Invalid Input: Only " . $this->parramArray['seats_left'] . " Tickets Left in The Basic Category";
         }
     }
     
