@@ -1,6 +1,10 @@
 <?php
 
 require_once "classes/SeatsValidation.php";
+require_once "classes/TimeException.php";
+
+
+use Carbon\Carbon;
 
 class Ticket extends Controller
 {
@@ -42,8 +46,6 @@ class Ticket extends Controller
         extract($_POST);
         $validation = new Validation();
 
-
-
         try {
             $validation->key('match_id')->value($_POST['match_id'])->required()->isNumber();
             $validation->key('user_id')->value($_POST['user_id'])->required()->isNumber();
@@ -51,13 +53,11 @@ class Ticket extends Controller
             $validation->key('premuim_category')->value($_POST['2'])->required()->isNumber()->between(0, 50, true)->lengthBetween(0, 3, true);
             $validation->key('basic_category')->value($_POST['3'])->required()->isNumber()->between(0, 50, true)->lengthBetween(0, 3, true);
 
-
-            if(empty(ltrim($_POST['1'], 0)) && empty(ltrim($_POST['2'], 0))  && empty(ltrim($_POST['3'], 0))){
+            if (empty(ltrim($_POST['1'], 0)) && empty(ltrim($_POST['2'], 0))  && empty(ltrim($_POST['3'], 0))) {
                 throw new InvalidInput("Number of Tickets is Required ");
             }
-
         } catch (Exception $e) {
-            
+
             error_log("Invalid Input: " . $e->getMessage() . "\n", 3, "errors.log");
             $message = "Ticket inserted successfully!";
             http_response_code(400);
@@ -65,7 +65,6 @@ class Ticket extends Controller
                 "message" => "Invalid Input: " . $e->getMessage(),
             ]);
             exit;
-
         }
 
         $matchId =  $validation->sanitize($_POST['match_id']);
@@ -74,19 +73,27 @@ class Ticket extends Controller
         $category_2 =  $validation->sanitize($_POST['2']);
         $category_3 =  $validation->sanitize($_POST['3']);
 
-       
 
+        // check if match is with in 30 hours
+        try {
 
+            $this->isnear($matchId);
+
+        } catch (TimeException $e) {
+            error_log($e->getMessage() . "\n", 3, "errors.log");
+            http_response_code(400);
+            echo json_encode([
+                "message" =>  $e->getMessage(),
+            ]);
+            exit;
+        }
 
         // check availabel tickets
         $this->check_available_seats($matchId, $category_3, $category_2, $category_1);
 
-
-
         $prefix = $matchId . $userId;
         $serialNumber = uniqid($prefix, true);
         $number_Of_Tickets_Per_Category = array_combine([1, 2, 3], [$category_1, $category_2, $category_3]);
-
 
         $ticketmodel = new TicketModel();
 
@@ -117,6 +124,25 @@ class Ticket extends Controller
                 "Id" => $insertedids
             ]);
         }
+    }
+
+    //  =============================================
+
+    public function isnear($matchId)
+    {
+        
+        $matchModel = new MatchesModel();
+        $match =  $matchModel->selectSingleRecords('matche', "*", "id = $matchId");
+        $date =  $match['date'];
+
+        $match_day_time = Carbon::parse($date);
+        $currentDate = Carbon::now();
+        $hoursDifference =  $currentDate->diffInHours($match_day_time) * ($match_day_time->isPast() ? -1 : 1);
+
+        if ($hoursDifference < 30) {
+            throw new TimeException("Sorry, tickets cannot be purchased within $hoursDifference  hours of the event");
+        }
+        return true;
     }
 
     private function check_available_seats($matchId, $category_3, $category_2, $category_1)
@@ -184,7 +210,6 @@ class Ticket extends Controller
     {
         return empty($reservedSeats) || !isset($reservedSeats[$index]) ? 0 : $reservedSeats[$index]['count'];
     }
-
 }
 
 
