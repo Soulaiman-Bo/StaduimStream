@@ -44,7 +44,7 @@ class Team extends Controller
 
 		if ($id !== "") {
 			$teammodel = new TeamModel();
-			$row = $teammodel->selectSingleRecords("teams", "*", "team_id = $id");
+			$row = $teammodel->selectSingleRecords("teams", "*", "id = $id");
 			$view = $this->getView($teammodel->Index(), false);
 			require_once "$view";
 		} else {
@@ -113,7 +113,7 @@ class Team extends Controller
 		extract($_POST);
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
 		$teamfields = array(	
 			'name' => $name,
@@ -128,7 +128,7 @@ class Team extends Controller
 			http_response_code(200);
 			echo json_encode([
 				"message" => $message,
-				"Id" => $insertedId
+				"id" => $insertedId
 			]);
 		}
 	}
@@ -139,9 +139,9 @@ class Team extends Controller
 
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
-		$result = $viewmodel->deleteRecord("teams", "team_id", $id);
+		$result = $viewmodel->deleteRecord("teams", "id", $id);
 
 		if ($result) {
 			$message = "Team deleted successfully!";

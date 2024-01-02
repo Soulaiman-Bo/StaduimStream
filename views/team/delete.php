@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,300,700' rel='stylesheet'
+        type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css'>
 
@@ -16,14 +17,18 @@
     <br>
     <p>you want to delete team with the </p>
     <br>
-    <p>ID: <?php echo $row['team_id'] ?></p>
-    <p>Team Name: <?php echo $row['team_name'] ?></p>
+    <p>ID:
+        <?php echo $row['id'] ?>
+    </p>
+    <p>Team Name:
+        <?php echo $row['name'] ?>
+    </p>
 
-    <form id="deletTeamForm" action="http://staduimstream.test/Team/deleteaction/<?php echo $row['team_id'] ?>" method="post">
-        <input type="hidden" value="<?php echo $row['team_id'] ?>" name="team_id">
+    <form id="deletTeamForm" action="http://staduimstream.test/Team/deleteaction/<?php echo $row['id'] ?>"
+        method="post">
+        <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
         <button type="submit">Delete</button>
     </form>
-
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>

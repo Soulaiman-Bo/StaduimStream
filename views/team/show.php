@@ -216,7 +216,7 @@
 
                                                 <td>
                                                     <p>
-                                                        <?= $row['firstname'] , " ", $row['lastname']?>
+                                                        <?= $row['firstname'], " ", $row['lastname'] ?>
                                                     </p>
                                                 </td>
 
@@ -231,9 +231,11 @@
                                                 <td class="align-middle">
                                                     <a href="http://staduimstream.test/Team/delete/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-danger" data-toggle="tooltip"
-                                                        data-original-title="Edit user">
+                                                        data-original-title="Edit user"
+                                                        >
                                                         Delete
                                                     </a>
+                                                    <!-- onclick="return confirm('Do you really want to Delete ?');"  -->
                                                 </td>
 
                                             </tr>
