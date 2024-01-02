@@ -54,13 +54,12 @@ class Team extends Controller
 	
 	protected function addaction()
 	{
-
 		extract($_POST);
 
-		$new_logo_url;
+		$new_logo;
 
-		if (isset($_FILES["logo_url"])) {
-			$file = $_FILES["logo_url"];
+		if (isset($_FILES["logo"])) {
+			$file = $_FILES["logo"];
 			// File properties
 			$fileName = $file["name"];
 			$fileTmpName = $file["tmp_name"];
@@ -70,10 +69,10 @@ class Team extends Controller
 			$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
 
 			// Generate a unique filename to avoid overwriting
-			$newFileName = $team_name .  "_" . uniqid('', true) . "." . $fileExt;
+			$newFileName = $name .  "_" . uniqid('', true) . "." . $fileExt;
 
 
-			$new_logo_url = $newFileName;
+			$new_logo = $newFileName;
 
 			$uploadDir = "public/uploads/";
 
@@ -85,22 +84,19 @@ class Team extends Controller
 		}
 
 		$viewmodel = new TeamModel();
-		$teamfields = array(
-			'team_name' => $team_name,
-			'founded_year' => $founded_year,
-			'country_name' => $country_name,
-			'stadium_name' => $stadium_name,
-			'stadium_capacity' => $stadium_capacity,
-			'logo_url' => $new_logo_url,
-			'website_url' => $website_url,
-			'league_name' => $league_name,
-			'division' => $division,
-			'current_manager' => $current_manager
+		$lastInsertedImageId = $viewmodel->insertRecord("images", ['link' => $new_logo]);
+
+		$teamfields = array(	
+
+			'name' => $name,
+			'manager'  => $manager,
+			'logo' => $lastInsertedImageId,
+
 		);
 
-
-
 		$insertedId = $viewmodel->insertRecord("teams", $teamfields);
+
+		$viewmodel->closeConnection();
 
 		if ($insertedId) {
 			$message = "Team inserted successfully!";
@@ -119,20 +115,13 @@ class Team extends Controller
 
 		$id = $_POST['team_id'];
 
-		$teamfields = array(
-			'team_name' => $team_name,
-			'founded_year' => $founded_year,
-			'country_name' => $country_name,
-			'stadium_name' => $stadium_name,
-			'stadium_capacity' => $stadium_capacity,
-			//'logo_url' => $logo_url, 
-			'website_url' => $website_url,
-			'league_name' => $league_name,
-			'division' => $division,
-			'current_manager' => $current_manager
+		$teamfields = array(	
+			'name' => $name,
+			'manager'  => $manager
 		);
 
-		$insertedId = $viewmodel->updateRecord("teams", $teamfields, $id);
+		$insertedId = $viewmodel->updateRecord("teams", $teamfields, "id", $id);
+		$viewmodel->closeConnection();
 
 		if ($insertedId) {
 			$message = "Team Updated successfully!";

@@ -16,12 +16,12 @@ class TicketModel extends Model
 
 			$sql = "INSERT INTO $table ($columns) VALUES ($values)";
 
-			$stmt = $this->pdo->prepare($sql);
+			$stmt = $this->connection->prepare($sql);
 
 			$stmt->execute(array_values($data));
 
 			// Get the last inserted ID (if applicable)
-			$lastInsertId = $this->pdo->lastInsertId();
+			$lastInsertId = $this->connection->lastInsertId();
 			return $lastInsertId;
 
 		} catch (PDOException $e) {
@@ -30,10 +30,6 @@ class TicketModel extends Model
 			exit;
 			return false;
 		}
-	}
-
-	public function closeConnection(){
-	 	 $this->pdo = null;
 	}
 
 
@@ -54,10 +50,10 @@ class TicketModel extends Model
 			$sql .= " GROUP BY $goupBy";
 		}
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->pdo = null;
+		$this->connection = null;
 
 		return $result;
 	}
