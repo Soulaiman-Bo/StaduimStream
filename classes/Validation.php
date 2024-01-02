@@ -1,5 +1,5 @@
 <?php
-
+require_once "ValidationException.php";
 class Validation
 {
 
@@ -22,8 +22,8 @@ class Validation
     public function required()
     {
         if (empty($this->_data['value'])) {
-            $this->_errors[] = $this->_data['key'] . ' is required';
-            
+            throw new InvalidInput($this->_data['key']." is required");
+            //$this->_errors[] = $this->_data['key'] . ' is required';  
         }
         return $this;
     }
@@ -74,12 +74,13 @@ class Validation
         return $this;
     }
 
-    public function sanitize()
+    public function sanitize($data)
     {
-        $this->_data['value'] = trim($this->_data['value']);
-        $this->_data['value'] = stripslashes($this->_data['value']);
-        $this->_data['value'] = htmlspecialchars($this->_data['value'], ENT_QUOTES, 'UTF-8');
-        return $this;
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+
+        return $data;
     }
 
     public function isValid()
