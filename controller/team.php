@@ -6,7 +6,7 @@ class Team extends Controller
 	protected function show()
 	{
 		$viewmodel = new TeamModel();
-		$rows = $viewmodel->selectRecords("teams");
+		$rows = $viewmodel->selectJoin("teams");
 		$view = $this->getView();
 		require_once $view;
 	}
@@ -17,7 +17,7 @@ class Team extends Controller
 
 		if ($id !== "") {
 			$viewmodel = new TeamModel();
-			$rows = $viewmodel->selectSingleRecords("teams", "*", "team_id = $id");
+			$rows = $viewmodel->selectSingleRecords("teams", "*", "id = $id");
 
 			if ($rows) {
 				$view = $this->getView();
