@@ -193,33 +193,7 @@
                                                 placeholder="Enter team name" required>
                                         </div>
                                     </div>
-                                    <!--<div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="founded_year" for="founded_year"
-                                                class="form-control-label">Foundation Year</label>
-                                            <input type="date" name="founded_year" id="founded_year"
-                                                placeholder="Enter foundation year" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="stadium_name" class="form-control-label"
-                                                for="stadium_name">Stadium Name</label>
-                                            <input type="text" name="stadium_name" id="stadium_name"
-                                                placeholder="Enter foundation year" class="form-control" required>
-                                        </div>
-                                    </div>
-                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="stadium_capacity"
-                                                for="stadium_capacity">Stadium Capacity</label>
-                                            <input type="number" name="stadium_capacity" id="stadium_capacity"
-                                                placeholder="Enter Stadium Capacity" class="form-control" required>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-
+ 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -228,35 +202,6 @@
                                                 placeholder="Enter foundation year" class="form-control" required>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" id="website_url" for="website_url">Website Url</label>
-                                            <input type="url" name="website_url" id="website_url" class="form-control" placeholder="Website Url">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="country_name" for="country_name">Country Name</label>
-                                            <input type="text" name="country_name" id="country_name" placeholder="Enter Country name" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="division" for="division">Division</label>
-                                            <input type="text" name="division" id="division" class="form-control" placeholder="division">
-                                        </div>
-                                    </div> 
-                                                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="league_name" for="league_name">League Name</label>
-                                            <input type="text" name="league_name" id="league_name" class="form-control" placeholder="leage name">
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
 
                                     <div class="col-md-6">
                                         <div class="form-group">

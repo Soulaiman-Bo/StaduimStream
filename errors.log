@@ -1,4 +1,1 @@
-Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_1` FOREIGN KEY (`team_1`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+

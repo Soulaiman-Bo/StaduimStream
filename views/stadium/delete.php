@@ -21,11 +21,10 @@
         <?php echo $row['id'] ?>
     </p>
     <p>Team Name:
-        <?php echo $row['name'] ?>
+        <?php echo $row['Name'] ?>
     </p>
 
-    <form id="deletTeamForm" action="http://staduimstream.test/Team/deleteaction/<?php echo $row['id'] ?>"
-        method="post">
+    <form id="deletestad" action="http://staduimstream.test/stadium/deleteaction/<?php echo $row['id'] ?>" method="post">
         <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
         <button type="submit">Delete</button>
     </form>
@@ -34,16 +33,15 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
 
     <script>
-        let deletTeamForm = document.getElementById('deletTeamForm');
+        let deletestad = document.getElementById('deletestad');
 
-        deletTeamForm.addEventListener("submit", async (e) => {
+        deletestad.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const form = e.currentTarget;
             const url = new URL(form.action);
 
-            const formData = new FormData(deletTeamForm);
-
+            const formData = new FormData(deletestad);
 
             try {
                 const response = await fetch(url, {
@@ -54,7 +52,7 @@
                 if (response.ok) {
                     const responseData = await response.json();
 
-                    if (responseData.message != "Team deleted successfully!") {
+                    if (responseData.message != "stadium deleted successfully!") {
                         throw new Error(`Error: ${response.status} - ${response.message}`);
                     }
 
@@ -70,7 +68,6 @@
                 swal("Delete Team", "Failed to delete", "error")
                 console.error(error);
             }
-
 
         })
     </script>
