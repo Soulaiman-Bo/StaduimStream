@@ -237,7 +237,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/update/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/matches/update/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-info" data-toggle="tooltip"
                                                         data-original-title="Edit user">
                                                         Edit
@@ -245,7 +245,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/delete/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/matches/delete/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-danger" data-toggle="tooltip"
                                                         data-original-title="Edit user">
                                                         Delete
