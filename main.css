@@ -25,9 +25,8 @@ body {
 }
 
 .backgroundImagePattern1 {
-  /* background-image: url('./dist/images/'), linear-gradient(205deg, #33B133 29.21%, #004930 79.56%); */
-  /* background-size: cover; */
-  background-image: url("http://staduimstream.test/public/assets/dist/afaaak.png");
+ 
+   background-image: url("http://staduimstream.test/public/assets/dist/afaaak.png"); 
 }
 
 
