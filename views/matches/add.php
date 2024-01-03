@@ -212,7 +212,7 @@
                                     <div class="col-md-6 w-full ">
                                         <div class="form-group">
                                             <label id="date" for="date" class="form-control-label">Date</label>
-                                            <input type="date" name="date" id="date" placeholder="Enter foundation year" class="form-control" required>
+                                            <input type="datetime-local" name="date" id="date" placeholder="Enter foundation year" class="form-control" required>
                                         </div>
                                     </div>
 

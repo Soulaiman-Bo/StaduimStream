@@ -211,9 +211,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label id="date" for="date" class="form-control-label">Date</label>
-                                        
-                                        <input <?= ('id' == $id) ? 'selected' : '' ?> type="datetime-local" name="date" id="date" placeholder="Enter foundation year" value="<?php echo $rows['date']  ?>" class="form-control" required>
+
+                                        <input type="datetime-local" name="date" id="date" placeholder="Enter foundation year" value="<?php echo $rows['date'] ?>" class="form-control" required>
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
