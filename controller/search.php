@@ -4,6 +4,15 @@ class Search extends Controller
 {
     public function index()
     {
+        $viewmodel = new TeamModel();
+		$rows = $viewmodel->selectJoin("teams");
+        $viewmodel->closeConnection();
+
+        $staduimmodel = new StaduimModel();
+		$staduimrows = $staduimmodel->selectRecords("stadiums");
+        $staduimmodel->closeConnection();
+
+       
         $view = $this->getView();
         require_once "$view";
     }

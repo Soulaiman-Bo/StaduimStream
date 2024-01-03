@@ -7,7 +7,6 @@ class SearchModel extends Model
 		return;
 	}
 
-
     public function getByTeamName($searchTerm)
 	{
 		$sql = "SELECT  M.id, M.date, T1.name as team_1, T2.name as team_2,  T1.logo as team_1_logo,  T2.logo as team_2_logo
@@ -26,7 +25,5 @@ class SearchModel extends Model
 
         return $result;
 	}
-
-
-
+    
 }
