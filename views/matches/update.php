@@ -170,60 +170,60 @@
 
                         <form method="post" action="http://staduimstream.test/matches/updateaction" id="updatematchform" enctype="multipart/form-data">
                             <div class="card-body">
-                            <input type="hidden" name="id" value="<?php echo $rows['id']  ?>" id="id" placeholder="Enter Match name" class="form-control" required>
-                                                          
-                                    <div>
-                                        <label id="team" for="team_name1" class="form-control-label">Team 1
-                                        </label>
-                                        <select id="team_name1"name="team_name1"value="<?php echo $rows['team_1']  ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Choose a Team</option>
+                                <input type="hidden" name="id" value="<?php echo $rows['id']  ?>" id="id" placeholder="Enter Match name" class="form-control" required>
 
-                                            <?php foreach($teams as $team): ?>
-                                                <option value=<?=  $team['id'] ?>><?=  $team['name'] ?></option>
-                                            <?php endforeach; ?>
+                                <div>
+                                    <label id="team" for="team_name1" class="form-control-label">Team 1
+                                    </label>
+                                    <select id="team_name1" name="team_name1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="" selected>Choose a Team</option>
 
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label id="team" for="team_name1" class="form-control-label">Team 2
-                                        </label>
-                                        <select id="team_name1"name="team_name2" value="<?php echo $rows['team_2']  ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Choose a Team</option>
-
-                                            <?php foreach($teams as $team): ?>
-                                                <option value=<?=  $team['id'] ?>><?=  $team['name'] ?></option>
-                                            <?php endforeach; ?>
-
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label id="stadiums" for="stadium" class="form-control-label">Stadium
-                                        </label>
-                                        <select id="stadium"name="Stadium" value="<?php echo $rows['stadium']  ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Choose a Stadium</option>
-
-                                            <?php foreach($stadiums as $stadium): ?>
-                                                <option value=<?=  $stadium['id'] ?>><?=  $stadium['Name'] ?></option>
-                                            <?php endforeach; ?>
-
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="date" for="date" class="form-control-label">Date</label>
-                                            <input type="date" name="date" id="date" placeholder="Enter foundation year" value="<?php echo $rows['date']  ?>" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <button type="submit" id="submit" class="btn btn-primary btn-block">Update 
-                                                Match </button>
-                                        </div>
-                                    </div>
-                                    
+                                        <?php foreach ($teams as $team) : ?>
+                                            <option <?= ($team['id'] == $rows['team_1']) ? 'selected' : '' ?> value="<?= $team['id'] ?>"><?= $team['name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
 
                                 </div>
+                                <div>
+                                    <label id="team" for="team_name1" class="form-control-label">Team 2
+                                    </label>
+                                    <select id="team_name1" name="team_name2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+
+                                        <?php foreach ($teams as $team) : ?>
+                                            <option <?= ($team['id'] == $rows['team_2']) ? 'selected' : '' ?> value=<?= $team['id'] ?>><?= $team['name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+
+                                </div>
+                                <div>
+                                    <label id="stadiums" for="stadium" class="form-control-label">Stadium
+                                    </label>
+                                    <select id="stadium" name="Stadium" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <?php foreach ($stadiums as $stadium) : ?>
+                                            <option <?= ($stadium['id'] == $rows['stadium']) ? 'selected' : '' ?> value=<?= $stadium['id'] ?>><?= $stadium['Name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label id="date" for="date" class="form-control-label">Date</label>
+                                        
+                                        <input <?= ('id' == $id) ? 'selected' : '' ?> type="datetime-local" name="date" id="date" placeholder="Enter foundation year" value="<?php echo $rows['date']  ?>" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button type="submit" id="submit" class="btn btn-primary btn-block">Update
+                                            Match </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </form>
 
                     </div>
