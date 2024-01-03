@@ -44,7 +44,7 @@ class Team extends Controller
 
 		if ($id !== "") {
 			$teammodel = new TeamModel();
-			$row = $teammodel->selectSingleRecords("teams", "*", "team_id = $id");
+			$row = $teammodel->selectSingleRecords("teams", "*", "id = $id");
 			$view = $this->getView($teammodel->Index(), false);
 			require_once "$view";
 		} else {

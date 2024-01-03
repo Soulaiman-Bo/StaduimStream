@@ -1,6 +1,6 @@
 <?php
 
-require_once "Connection.php";
+require_once "DatabaseConnection.php";
 
 abstract class Model
 {
@@ -59,7 +59,6 @@ abstract class Model
 		// $result = $stmt->fetchAll();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		// Close the statement
 
 		return $result;
 	}

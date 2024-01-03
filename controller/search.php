@@ -7,4 +7,31 @@ class Search extends Controller
         $view = $this->getView();
         require_once "$view";
     }
+
+    public function search()
+    {
+
+         $id = $_GET['id'];
+
+        $searchTerm = '%' . $id . '%';
+
+        $searchmodel = new SearchModel();
+
+        $result = $searchmodel->getByTeamName($searchTerm);
+
+
+        if ($result) {
+            foreach ($result as $row) {
+                echo "Date: " . $row["date"] . "<br>";
+                echo "team_1: " . $row["team_1"] . "<br>";
+                echo "team_2: " . $row["team_2"] . "<br> <br>";
+            }
+        } else {
+            echo "No results found";
+        }
+
+
+
+
+    }
 }
