@@ -7,6 +7,7 @@ class stadium extends Controller
     {
         $viewmodel = new StaduimModel();
         $rows = $viewmodel->selectJoins("stadiums");
+        
         $view = $this->getView();
         require_once $view;
     }
@@ -17,11 +18,13 @@ class stadium extends Controller
 
         if ($id !== "") {
             $viewmodel = new StaduimModel();
-            $rows = $viewmodel->selectSingleRecords("stadiums", "*", "id = $id");
+            $cities = $viewmodel->selectRecords("cities", "*");
+            $stadiums = $viewmodel->selectSingleRecordss("stadium", "*", "stadiums.id = $id");
 
-            if ($rows) {
+            if ($cities) {
                 $view = $this->getView();
                 require_once "$view";
+                
             } else {
                 echo "<h1>ERROR 404: Bad Request</h1>";
             }
@@ -129,7 +132,6 @@ class stadium extends Controller
             'vip_seats' => $vip_seats,
             'premuim_seats' => $premuim_seats,
             'basic_seats' => $basic_seats,
-
         );
 
         $insertedId = $viewmodel->updateRecord("stadiums", $teamfields, "id", $id);
