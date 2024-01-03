@@ -125,11 +125,10 @@
       </div>
     </div>
 
-    <section class="mt-20">
+    <section class="mt-20 mb-20">
       <div
         style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-        class="w-full md:w-2/3 mx-auto flex items-center justify-between p-5 px-14 rounded-lg hover:bg-gray-200 bg-white mt-12"
-      >
+        class="w-full md:w-2/3 mx-auto flex items-center justify-between p-5 px-14 rounded-lg hover:bg-gray-200 bg-white mt-12">
         <div class="flex items-center gap-8">
           <div class="flex items-center gap-8">
             <p class="font-bold text-2xl text-gray-600">Ivory Cost</p>
@@ -246,5 +245,8 @@
         </a>
       </div>
     </section>
-  </body>
+
+    <?php require_once "./views/includes/footer.php" ?>
+
+  </body> 
 </html>
