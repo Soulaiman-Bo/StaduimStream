@@ -1,5 +1,6 @@
 <?php
 
+  session_start();
 // class UserModel extends Model
 // {
 // 	public function Index()
@@ -11,58 +12,36 @@
 // }
 // require_once '../libraries/connection.php';
 
-class User  extends Model{
+class UserModel  extends Model{
+        private $id;
+        private $email;
+        private $password;
+       
 
+    
 
+        public function vrfyemail($email) {
+            $this->email = $email;
+            $sql = "SELECT * FROM user WHERE email = :email";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':email', $this->email);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result . 'email exst!';
+        }
 
-    //Find user by email or username
-    public function findUserByEmailOrUsername($email, $username){
-        $this->connection->query('SELECT * FROM user WHERE firstname = :Fristname OR email = :email');
-        $this->connection->bind(':Fristname', $username);
-        $this->connection->bind(':email', $email);
+        public function vrfypassword($password) {
+            $this->password = $password;
+            $sql = '';
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam('', $this->password);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
-        $row = $this->connection->single();
-
-        //Check row
-        if($this->connection->rowCount() > 0){
-            return $row;
-        }else{
-            return false;
+        public function logout() {
+            session_destroy();
+            header('Location:/auth/logout');
         }
     }
-
-    //Register User
-    public function register($data){
-        $this->connection->query('INSERT INTO users (firstname ,lastname,cin,email,phone,password) 
-        VALUES (:Fristname, :Lastname, :cin, ,:email ,:phone,:password)');
-        //Bind values
-        $this->connection->bind('::Fristname', $data['firstname']);
-        $this->connection->bind(':Lastname', $data['lastname']);
-        $this->connection->bind(':cin', $data['cin']);
-        $this->connection->bind(':email', $data['email']);
-        $this->connection->bind(':phone', $data['phone']);
-        $this->connection->bind(':password', $data['password']);
-
-        //Execute
-        if($this->connection->execute()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    //Login user
-    public function login($nameOrEmail, $password){
-        $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
-
-        if($row == false) return false;
-
-        $hashedPassword = $row->usersPwd;
-        if(password_verify($password, $hashedPassword)){
-            return $row;
-        }else{
-            return false;
-        }
-    }
-
-}

@@ -29,7 +29,7 @@
             </div>
       
             <div class="flex gap-6">
-              <a href="singin.php" class="flex gap-4 items-center cursor-pointer">
+              <a href=http://staduimstream.test/user/login class="flex gap-4 items-center cursor-pointer">
                 <svg
                   width="17"
                   height="16"
@@ -53,7 +53,7 @@
                 <span  class="text-lg">Login</span>
               </a>
       
-              <a href="signup.php" class="cursor-pointer">
+              <a href="http://staduimstream.test/user/signup" class="cursor-pointer">
                 <span
                   class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900"
                   >Sign up</span
@@ -76,7 +76,7 @@
             </div>
 
             <div class="mt-8 lg:w-1/2 lg:mt-0">
-                <form class="form w-full lg:max-w-xl">
+                <form class="form w-full lg:max-w-xl" method="POST" action="http://staduimstream.test/user/loginAction">
                     <div class="relative flex items-center">
                         <span class="absolute">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-3 text-gray-300 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -112,7 +112,7 @@
         
         <div class="mt-8 md:mt-24 sm:flex sm:items-center">
             <h3 class="andertitle text-blue-500 dark:text-blue-400 sm:w-1/2">if you don’t an account <br>
-            you can <a href="signup.php" class="z-50"> Register here !</a></h3>
+            you can <a href="http://staduimstream.test/user/signup" class="z-50"> Register here !</a></h3>
             
             <div class="links flex items-center mt-4 sm:mt-0 -mx-1.5 sm:w-1/2">
                 <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">

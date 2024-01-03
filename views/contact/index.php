@@ -157,6 +157,6 @@
   </div>
   <!-- Container for demo purpose -->
     </main>
-    <?php require '../includes/footer.php' ?>
+    <?php require('views/includes/footer.php') ?>
 </body>
 </html>

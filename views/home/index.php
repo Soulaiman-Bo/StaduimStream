@@ -24,13 +24,13 @@
           <a href="/" class="cursor-pointer">Tickets</a>
         </li>
         <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Contact</a>
+          <a href="http://staduimstream.test/Contact/" class="cursor-pointer">Contact</a>
         </li>
       </ul>
     </div>
 
     <div class="flex gap-6">
-      <a href="/" class="flex gap-4 items-center cursor-pointer">
+      <a href="../user/login" class="flex gap-4 items-center cursor-pointer">
         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14.0417 7.74996C14.0417 11.3168 11.1502 14.2083 7.58333 14.2083C4.01649 14.2083 1.125 11.3168 1.125 7.74996C1.125 4.18312 4.01649 1.29163 7.58333 1.29163C11.1502 1.29163 14.0417 4.18312 14.0417 7.74996Z"
@@ -41,7 +41,7 @@
         <span class="text-lg">Login</span>
       </a>
 
-      <a href="/" class="cursor-pointer">
+      <a href="../user/signup" class="cursor-pointer">
         <span class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900">Sign
           up</span>
       </a>
@@ -156,7 +156,6 @@
       <div class="flex flex-wrap flex-col gap-10">
         <div class="flex flex-wrap gap-10 justify-center">
           <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-
             <div class="px-6 py-4 " style="background-color: white; width: 18rem; height: 18rem;">
               <div class="font-bold text-xl mb-2 text-center">Group A</div>
               <div class="flex items-center gap-4">
@@ -567,7 +566,7 @@
 
       </div>
     </div>
-    <?php require_once('views/includes/footer.php') ?>
+    <?php require('views/includes/footer.php') ?>
   </section>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
