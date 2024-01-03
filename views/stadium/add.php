@@ -177,7 +177,7 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Create a Team</p>
+                                <p class="mb-0">Create a Stadium</p>
                             </div>
                         </div>
 
@@ -187,17 +187,16 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label id="team_name" for="team_name" class="form-control-label">Team
+                                            <label id="team_name" for="team_name" class="form-control-label">Stadium
                                                 Name</label>
                                             <input class="form-control" type="text" name="name" id="team_name"
                                                 placeholder="Enter team name" required>
                                         </div>
                                     </div>
- 
-                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="logo_url" for="logo_url">Logo</label>
+                                            <label class="form-control-label" id="logo_url" for="logo_url">Stadium images</label>
                                             <input type="file" name="logo" id="logo_url" accept="image/*"
                                                 placeholder="Enter foundation year" class="form-control" required>
                                         </div>
@@ -206,9 +205,56 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-control-label" id="current_manager"
-                                                for="current_manager">Current Manager</label>
-                                            <input type="text" name="manager" id="current_manager"
-                                                class="form-control" placeholder="current manager">
+                                                for="address">Address</label>
+                                            <input type="text" name="address" id="address" class="form-control"
+                                                placeholder="Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="current_manager"
+                                                for="capacity">Capacity</label>
+                                            <input type="text" name="capacity" id="capacity" class="form-control"
+                                                placeholder="capacity">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="current_manager"
+                                                for="city">city</label>
+                                            <select class="form-select" aria-label="Default select example" name="city"
+                                                id="city">
+                                                <option value="<?php ?>"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="current_manager"
+                                                for="current_manager">VIP seats</label>
+                                            <input type="text" name="manager" id="current_manager" class="form-control"
+                                                placeholder="current manager">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="current_manager"
+                                                for="current_manager">Premuim seats</label>
+                                            <input type="text" name="manager" id="current_manager" class="form-control"
+                                                placeholder="current manager">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="current_manager"
+                                                for="current_manager">Basic seats</label>
+                                            <input type="text" name="manager" id="current_manager" class="form-control"
+                                                placeholder="current manager">
                                         </div>
                                     </div>
 

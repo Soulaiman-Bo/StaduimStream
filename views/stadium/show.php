@@ -1,3 +1,17 @@
+<!--
+=========================================================
+* Argon Dashboard 2 - v2.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,39 +31,31 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="http://staduimstream.test/public/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css'>
-    <link rel="stylesheet" href="./style.css">
-
-
     <!-- CSS Files -->
     <link id="pagestyle" href="http://staduimstream.test/public/assets/css/argon-dashboard.css?v=2.0.4"
         rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
-    <div class="position-absolute w-100 min-height-300 top-0"
-        style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
-        <span class="mask bg-primary opacity-6"></span>
-    </div>
+<body class="g-sidenav-show   bg-gray-100">
+    <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
     <?php require_once "views/includes/sidebar.php" ?>
 
 
-
-    <div class="main-content position-relative max-height-vh-100 h-100">
+    <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        <nav
-            class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2 mt-n11">
-            <div class="container-fluid py-1">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
+            <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 ps-2 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="text-white opacity-5"
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
                                 href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Profile</li>
+                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
                     </ol>
-                    <h6 class="text-white font-weight-bolder ms-2">Profile</h6>
+                    <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
                 </nav>
-                <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group">
                             <span class="input-group-text text-body"><i class="fas fa-search"
@@ -57,23 +63,20 @@
                             <input type="text" class="form-control" placeholder="Type here...">
                         </div>
                     </div>
-
-                    <ul class="navbar-nav justify-content-end">
+                    <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">Sign In</span>
                             </a>
                         </li>
-                        <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-white p-0">
-                                <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                                    <div class="sidenav-toggler-inner">
-                                        <i class="sidenav-toggler-line bg-white"></i>
-                                        <i class="sidenav-toggler-line bg-white"></i>
-                                        <i class="sidenav-toggler-line bg-white"></i>
-                                    </div>
-                                </a>
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                </div>
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
@@ -86,13 +89,14 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-bell cursor-pointer"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 ms-n4"
+
+                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                                 aria-labelledby="dropdownMenuButton">
                                 <li class="mb-2">
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
@@ -111,7 +115,7 @@
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
                                                 <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                    class="avatar avatar-sm bg-gradient-dark me-3">
+                                                    class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
@@ -128,7 +132,7 @@
                                 <li>
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
+                                            <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
                                                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -163,101 +167,140 @@
                                     </a>
                                 </li>
                             </ul>
+
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
         <!-- End Navbar -->
 
+
         <div class="container-fluid py-4">
             <div class="row">
-                <div class="">
-                    <div class="card">
+                <div class="col-12">
+                    <div style="padding-left: 2rem;" class="card pl-5 mb-4">
                         <div class="card-header pb-0">
-                            <div class="d-flex align-items-center">
-                                <p class="mb-0">Create a Team</p>
+                            <h6>Teams table</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="http://staduimstream.test/Team/add" style="margin-block: 2rem;"
+                                        class="btn btn-primary btn-block">Add New Stadium</a>
+                                </div>
                             </div>
                         </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
 
-                        <form action="http://staduimstream.test/Team/addaction" id="addteamform"
-                            enctype="multipart/form-data">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="team_name" for="team_name" class="form-control-label">Team
-                                                Name</label>
-                                            <input class="form-control" type="text" name="name" id="team_name"
-                                                placeholder="Enter team name" required>
-                                        </div>
-                                    </div>
- 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="logo_url" for="logo_url">Logo</label>
-                                            <input type="file" name="logo" id="logo_url" accept="image/*"
-                                                placeholder="Enter foundation year" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
-                                                for="current_manager">Current Manager</label>
-                                            <input type="text" name="manager" id="current_manager"
-                                                class="form-control" placeholder="current manager">
-                                        </div>
-                                    </div>
-
-                                    <hr class="horizontal dark">
-                                    <p class="text-uppercase text-sm">About The Team</p>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="descripton" id="descripton"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <button type="submit" id="submit" class="btn btn-primary btn-block">Add
-                                                Team</button>
-                                        </div>
-                                    </div>
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Stadium Name</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium Address</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium City</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium Capacity</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium VIP seats</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium Premuim seats</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium basics seats</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($rows as $row): ?>
+                                            <tr class="pl-3">
+                                                <td>
+                                                    <p>
+                                                        <?= $row['Name'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['Address'] ?>
+                                                    </p>
+                                                </td>
 
 
-                                </div>
-                        </form>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['city'] ?>
+                                                    </p>
+                                                </td>
 
+                                                <td>
+                                                    <p>
+                                                        <?= $row['capacity'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['vip_seats'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['premuim_seats'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['basic_seats'] ?>
+                                                    </p>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <a href="http://staduimstream.test/Team/update/<?= $row['id'] ?>"
+                                                        class="badge badge-sm bg-gradient-info" data-toggle="tooltip"
+                                                        data-original-title="Edit user">
+                                                        Edit
+                                                    </a>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <a href="http://staduimstream.test/Team/delete/<?= $row['id'] ?>"
+                                                        class="badge badge-sm bg-gradient-danger" data-toggle="tooltip"
+                                                        data-original-title="Edit user">
+                                                        Delete
+                                                    </a>
+                                                    <!-- onclick="return confirm('Do you really want to Delete ?');"  -->
+                                                </td>
+
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+    </main>
 
 
     <!--   Core JS Files   -->
-    <script src="https://cdn.tiny.cloud/1/14gb2y6rjnk0b2ifli10mxiep8tezzcu0kl5ktmg9jqw1f6r/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-    <script src="http://staduimstream.test/public/assets/js/popper.min.js"></script>
-    <script src="http://staduimstream.test/public/assets/js/bootstrap.min.js"></script>
-    <script src="http://staduimstream.test/public/assets/js/perfect-scrollbar.min.js"></script>
-    <script src="http://staduimstream.test/public/assets/js/smooth-scrollbar.min.js"></script>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
-    <script src="./script.js"></script>
+    <script src="http://staduimstream.test/public/assets/js/core/popper.min.js"></script>
+    <script src="http://staduimstream.test/public/assets/js/core/bootstrap.min.js"></script>
+    <script src="http://staduimstream.test/public/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="http://staduimstream.test/public/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
             var options = {
@@ -265,48 +308,9 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-
-        let addteamform = document.getElementById('addteamform');
-
-        addteamform.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            tinyMCE.triggerSave()
-            const form = e.currentTarget;
-            const url = new URL(form.action);
-
-            const formData = new FormData(addteamform);
-            console.log(formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: "POST",
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    const responseData = await response.json();
-
-                    if (responseData.message != 'Team inserted successfully!') {
-                        throw new Error(`Error: ${response.status} - ${response.message}`);
-                    }
-
-                    swal("Create Team", responseData.message, "success")
-                    console.log(responseData.message);
-                }
-
-                if (!response.ok) {
-
-                    throw new Error(`Error: ${response.status} - ${response.message}`);
-                }
-
-            } catch (error) {
-                swal("Create Team", "Failed to isert", "error")
-                console.error(error);
-            }
-
-
-        })
     </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="http://staduimstream.test/public/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
 </body>
