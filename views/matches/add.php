@@ -19,16 +19,15 @@
     <link href="http://staduimstream.test/public/assets/css/nucleo-svg.css" rel="stylesheet" />
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css'>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
     <!-- CSS Files -->
-    <link id="pagestyle" href="http://staduimstream.test/public/assets/css/argon-dashboard.css?v=2.0.4"
-        rel="stylesheet" />
+    <link id="pagestyle" href="http://staduimstream.test/public/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
-    <div class="position-absolute w-100 min-height-300 top-0"
-        style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
+    <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
         <span class="mask bg-primary opacity-6"></span>
     </div>
 
@@ -38,13 +37,11 @@
 
     <div class="main-content position-relative max-height-vh-100 h-100">
         <!-- Navbar -->
-        <nav
-            class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2 mt-n11">
+        <nav class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2 mt-n11">
             <div class="container-fluid py-1">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 ps-2 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="text-white opacity-5"
-                                href="javascript:;">Pages</a></li>
+                        <li class="breadcrumb-item text-sm"><a class="text-white opacity-5" href="javascript:;">Pages</a></li>
                         <li class="breadcrumb-item text-sm text-white active" aria-current="page">Profile</li>
                     </ol>
                     <h6 class="text-white font-weight-bolder ms-2">Profile</h6>
@@ -52,8 +49,7 @@
                 <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group">
-                            <span class="input-group-text text-body"><i class="fas fa-search"
-                                    aria-hidden="true"></i></span>
+                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                             <input type="text" class="form-control" placeholder="Type here...">
                         </div>
                     </div>
@@ -82,12 +78,10 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-bell cursor-pointer"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 ms-n4"
-                                aria-labelledby="dropdownMenuButton">
+                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 ms-n4" aria-labelledby="dropdownMenuButton">
                                 <li class="mb-2">
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
@@ -110,8 +104,7 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                    class="avatar avatar-sm bg-gradient-dark me-3">
+                                                <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark me-3">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
@@ -129,20 +122,14 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
-                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                     <title>credit-card</title>
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <g transform="translate(-2169.000000, -745.000000)"
-                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                        <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                                             <g transform="translate(1716.000000, 291.000000)">
                                                                 <g transform="translate(453.000000, 454.000000)">
-                                                                    <path class="color-background"
-                                                                        d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
-                                                                        opacity="0.593633743"></path>
-                                                                    <path class="color-background"
-                                                                        d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                                    <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                                                    <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
                                                                     </path>
                                                                 </g>
                                                             </g>
@@ -181,50 +168,58 @@
                             </div>
                         </div>
 
-                        <form method="post" action="http://staduimstream.test/matches/addaction" id="addmatchform"
-                            enctype="multipart/form-data">
+                        <form method="post" action="http://staduimstream.test/matches/addaction" id="addmatchform" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="team_name1" for="team_name1" class="form-control-label">Team 1
-                                               </label>
-                                            <input class="form-control" type="text" name="team_name1" id="team_name1"
-                                                placeholder="Enter team name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="team_name2" for="team_name2" class="form-control-label">Team 2
-                                               </label>
-                                            <input class="form-control" type="text" name="team_name2" id="team_name2"
-                                                placeholder="Enter team name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label id="date" for="date"
-                                                class="form-control-label">Date</label>
-                                            <input type="date" name="date" id="date"
-                                                placeholder="Enter foundation year" class="form-control" required>
-                                        </div>
-                                    </div>
-                                 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" id="Stadium"
-                                                for="Stadium">Stadium</label>
-                                            <input type="text" name="Stadium" id="Stadium"
-                                                class="form-control" placeholder="Stadium">
-                                        </div>
-                                    </div>
+                                    
+                                    <div>
+                                        <label id="team" for="team_name1" class="form-control-label">Team 1
+                                        </label>
+                                        <select id="team_name1"name="team_name1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Choose a Team</option>
 
-                                  
+                                            <?php foreach($teams as $team): ?>
+                                                <option value=<?=  $team['id'] ?>><?=  $team['name'] ?></option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label id="team" for="team_name1" class="form-control-label">Team 2
+                                        </label>
+                                        <select id="team_name1"name="team_name2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Choose a Team</option>
+
+                                            <?php foreach($teams as $team): ?>
+                                                <option value=<?=  $team['id'] ?>><?=  $team['name'] ?></option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label id="stadiums" for="stadium" class="form-control-label">Stadium
+                                        </label>
+                                        <select id="stadium"name="Stadium" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Choose a Stadium</option>
+
+                                            <?php foreach($stadiums as $stadium): ?>
+                                                <option value=<?=  $stadium['id'] ?>><?=  $stadium['Name'] ?></option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                    </div>
+                                   
+                                    <div class="col-md-6 w-full ">
+                                        <div class="form-group">
+                                            <label id="date" for="date" class="form-control-label">Date</label>
+                                            <input type="date" name="date" id="date" placeholder="Enter foundation year" class="form-control" required>
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-4">
                                             <button type="submit" id="submit" class="btn btn-primary btn-block">Add
-                                               Match </button>
+                                                Match </button>
                                         </div>
                                     </div>
 
@@ -240,8 +235,7 @@
 
 
     <!--   Core JS Files   -->
-    <script src="https://cdn.tiny.cloud/1/14gb2y6rjnk0b2ifli10mxiep8tezzcu0kl5ktmg9jqw1f6r/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/14gb2y6rjnk0b2ifli10mxiep8tezzcu0kl5ktmg9jqw1f6r/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="http://staduimstream.test/public/assets/js/popper.min.js"></script>
     <script src="http://staduimstream.test/public/assets/js/bootstrap.min.js"></script>
     <script src="http://staduimstream.test/public/assets/js/perfect-scrollbar.min.js"></script>
@@ -249,8 +243,8 @@
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
     <script src="./script.js"></script>
-   
- 
+
+
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="http://staduimstream.test/public/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
 </body>
