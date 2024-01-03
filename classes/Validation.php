@@ -21,9 +21,8 @@ class Validation
 
     public function required()
     {
-        if (empty($this->_data['value'])) {
-            throw new InvalidInput($this->_data['key']." is required");
-            //$this->_errors[] = $this->_data['key'] . ' is required';  
+        if ($this->_data['value'] === null) {
+            throw new InvalidInput($this->_data['key'] . " is required");
         }
         return $this;
     }
@@ -58,10 +57,51 @@ class Validation
         return $this;
     }
 
+    public function between($minValue, $maxValue, $inclusive = false)
+    {
+        $this->_data['min'] = $minValue;
+        $this->_data['max'] = $maxValue;
+
+        $verify = ($inclusive === true ?
+            ($this->_data['value'] >= $minValue && $this->_data['value'] <= $maxValue) : ($this->_data['value'] > $minValue && $this->_data['value'] < $maxValue)
+        );
+
+        if (!$verify) {
+            throw new InvalidInput($this->_data['key'] . " should be between $minValue and $maxValue");
+        }
+
+        return $this;
+    }
+
+    public function lengthBetween($minLength, $maxLength, $inclusive = false)
+    {
+        $this->_data['min_length'] = $minLength;
+        $this->_data['max_length'] = $maxLength;
+
+        $length = strlen($this->_data['value']);
+        $verify = ($inclusive === true ?
+            ($length >= $minLength && $length <= $maxLength) : ($length > $minLength && $length < $maxLength)
+        );
+
+        if (!$verify) {
+            throw new InvalidInput($this->_data['key'] . " length should be between $minLength and $maxLength characters");
+        }
+
+        return $this;
+    }
+
     public function isEmail()
     {
         if (filter_var($this->_data['value'], FILTER_VALIDATE_EMAIL) === false) {
             $this->_errors[] = $this->_data['key'] . " Not a valid Email";
+        }
+        return $this;
+    }
+
+    public function isNumber()
+    {
+        if (!is_numeric($this->_data['value'])) {
+            throw new InvalidInput($this->_data['key'] . " is not a valid number");
         }
         return $this;
     }

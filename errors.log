@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
 Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
 Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
@@ -27,3 +28,9 @@ Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vi
 Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
 Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
 Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
+=======
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_1` FOREIGN KEY (`team_1`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`stadiumstream`.`matche`, CONSTRAINT `matche_ibfk_3` FOREIGN KEY (`stadium`) REFERENCES `stadiums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+>>>>>>> 401591d855f36d5c53da45e94162bc0cb64afa6c
