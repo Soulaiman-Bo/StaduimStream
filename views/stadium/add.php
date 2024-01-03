@@ -181,80 +181,84 @@
                             </div>
                         </div>
 
-                        <form action="http://staduimstream.test/Team/addaction" id="addteamform"
+                        <form action="http://staduimstream.test/stadium/addaction" id="addteamform"
                             enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label id="team_name" for="team_name" class="form-control-label">Stadium
+                                            <label id="stad_name" for="stad_name" class="form-control-label">Stadium
                                                 Name</label>
-                                            <input class="form-control" type="text" name="name" id="team_name"
+                                            <input class="form-control" type="text" name="Name" id="stad_name"
                                                 placeholder="Enter team name" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="logo_url" for="logo_url">Stadium images</label>
-                                            <input type="file" name="logo" id="logo_url" accept="image/*"
-                                                placeholder="Enter foundation year" class="form-control" required>
+                                            <label class="form-control-label" id="logo_url" for="logo_url">Stadium
+                                                Images</label>
+                                            <input type="file" name="img" id="logo_url" accept="image/*"
+                                                class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
+                                            <label class="form-control-label" id="address_label"
                                                 for="address">Address</label>
-                                            <input type="text" name="address" id="address" class="form-control"
+                                            <input type="text" name="Address" id="address" class="form-control"
                                                 placeholder="Address">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
+                                            <label class="form-control-label" id="capacity_label"
                                                 for="capacity">Capacity</label>
-                                            <input type="text" name="capacity" id="capacity" class="form-control"
-                                                placeholder="capacity">
+                                            <input type="number" name="capacity" id="capacity" class="form-control"
+                                                placeholder="Capacity">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
-                                                for="city">city</label>
+                                            <label class="form-control-label" id="city_label" for="city">City</label>
                                             <select class="form-select" aria-label="Default select example" name="city"
                                                 id="city">
-                                                <option value="<?php ?>"></option>
+                                                <?php foreach ($rows as $row): ?>
+                                                    <option value="<?= $row['id'] ?>">
+                                                        <?= $row['city'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
-                                                for="current_manager">VIP seats</label>
-                                            <input type="text" name="manager" id="current_manager" class="form-control"
-                                                placeholder="current manager">
+                                            <label class="form-control-label" id="vip_seats_label" for="vip_seats">VIP
+                                                Seats</label>
+                                            <input type="number" name="vip_seats" id="vip_seats" class="form-control"
+                                                placeholder="VIP seats">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
-                                                for="current_manager">Premuim seats</label>
-                                            <input type="text" name="manager" id="current_manager" class="form-control"
-                                                placeholder="current manager">
+                                            <label class="form-control-label" id="premuim_seats_label"
+                                                for="premuim_seats">Premium Seats</label>
+                                            <input type="number" name="premuim_seats" id="premuim_seats"
+                                                class="form-control" placeholder="Premium seats">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" id="current_manager"
-                                                for="current_manager">Basic seats</label>
-                                            <input type="text" name="manager" id="current_manager" class="form-control"
-                                                placeholder="current manager">
+                                            <label class="form-control-label" id="basic_seats_label"
+                                                for="basic_seats">Basic Seats</label>
+                                            <input type="number" name="basic_seats" id="basic_seats"
+                                                class="form-control" placeholder="Basic seats">
                                         </div>
                                     </div>
 
@@ -272,7 +276,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <button type="submit" id="submit" class="btn btn-primary btn-block">Add
-                                                Team</button>
+                                                Stadium</button>
                                         </div>
                                     </div>
 
@@ -332,7 +336,7 @@
                 if (response.ok) {
                     const responseData = await response.json();
 
-                    if (responseData.message != 'Team inserted successfully!') {
+                    if (responseData.message != 'Stadium inserted successfully!') {
                         throw new Error(`Error: ${response.status} - ${response.message}`);
                     }
 

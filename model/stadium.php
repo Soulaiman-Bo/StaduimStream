@@ -9,7 +9,6 @@ class StaduimModel extends Model
 
 	function selectJoins($table, $columns = "*", $where = null)
 	{
-		// $sql = "SELECT $table.$columns, manager.firstname, manager.lastname FROM teams INNER JOIN manager ON teams.manager = manager.id; ORDER teams.id BY  DESC";
 		$sql = "SELECT $table.$columns, cities.city 
         FROM stadiums 
         INNER JOIN cities ON stadiums.city = cities.id 

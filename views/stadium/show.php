@@ -184,7 +184,7 @@
                             <h6>Teams table</h6>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="http://staduimstream.test/Team/add" style="margin-block: 2rem;"
+                                    <a href="http://staduimstream.test/stadium/add" style="margin-block: 2rem;"
                                         class="btn btn-primary btn-block">Add New Stadium</a>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/update/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/stadium/update/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-info" data-toggle="tooltip"
                                                         data-original-title="Edit user">
                                                         Edit
@@ -271,7 +271,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/delete/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/stadium/delete/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-danger" data-toggle="tooltip"
                                                         data-original-title="Edit user">
                                                         Delete

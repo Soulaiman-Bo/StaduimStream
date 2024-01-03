@@ -1,17 +1,7 @@
 <?php
 
-
-
 class stadium extends Controller
 {
-    // protected function index()
-    // {
-    //     // $viewmodel = new TeamModel();
-    //     // $rows = $viewmodel->selectRecords("teams");
-    //     $view = $this->getView();
-        
-    //     require_once "$view";
-    // }
 
     protected function show()
     {
@@ -44,6 +34,7 @@ class stadium extends Controller
     {
 
         $viewmodel = new StaduimModel();
+        $rows = $viewmodel->selectJoins("stadiums");
         $view = $this->getView();
         require_once "$view";
     }
@@ -68,8 +59,8 @@ class stadium extends Controller
 
         $new_logo;
 
-        if (isset($_FILES["logo"])) {
-            $file = $_FILES["logo"];
+        if (isset($_FILES["img"])) {
+            $file = $_FILES["img"];
             // File properties
             $fileName = $file["name"];
             $fileTmpName = $file["tmp_name"];
@@ -79,7 +70,7 @@ class stadium extends Controller
             $fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
 
             // Generate a unique filename to avoid overwriting
-            $newFileName = $name . "_" . uniqid('', true) . "." . $fileExt;
+            $newFileName = $Name . "_" . uniqid('', true) . "." . $fileExt;
 
 
             $new_logo = $newFileName;
@@ -98,9 +89,14 @@ class stadium extends Controller
 
         $teamfields = array(
 
-            'name' => $name,
-            'manager' => $manager,
-            'logo' => $lastInsertedImageId,
+            'Name' => $Name,
+            'Address' => $Address,
+            'capacity' => $capacity,
+            'city' => $city,
+            'vip_seats' => $vip_seats,
+            'premuim_seats' => $premuim_seats,
+            'basic_seats' => $basic_seats,
+            'img' => $lastInsertedImageId
 
         );
 
@@ -126,8 +122,14 @@ class stadium extends Controller
         $id = $_POST['id'];
 
         $teamfields = array(
-            'name' => $name,
-            'manager' => $manager
+            'Name' => $Name,
+            'Address' => $Address,
+            'capacity' => $capacity,
+            'city' => $city,
+            'vip_seats' => $vip_seats,
+            'premuim_seats' => $premuim_seats,
+            'basic_seats' => $basic_seats,
+
         );
 
         $insertedId = $viewmodel->updateRecord("stadiums", $teamfields, "id", $id);

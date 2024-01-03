@@ -10,7 +10,7 @@ class Team extends Controller
 		$view = $this->getView();
 		require_once $view;
 	}
-	
+
 	protected function update()
 	{
 		$id = $_GET['id'];
@@ -51,7 +51,7 @@ class Team extends Controller
 			echo '<h1>ERROR 404: Bad Request</h1>';
 		}
 	}
-	
+
 	protected function addaction()
 	{
 		extract($_POST);
@@ -69,7 +69,7 @@ class Team extends Controller
 			$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
 
 			// Generate a unique filename to avoid overwriting
-			$newFileName = $name .  "_" . uniqid('', true) . "." . $fileExt;
+			$newFileName = $name . "_" . uniqid('', true) . "." . $fileExt;
 
 
 			$new_logo = $newFileName;
@@ -86,10 +86,10 @@ class Team extends Controller
 		$viewmodel = new TeamModel();
 		$lastInsertedImageId = $viewmodel->insertRecord("images", ['link' => $new_logo]);
 
-		$teamfields = array(	
+		$teamfields = array(
 
 			'name' => $name,
-			'manager'  => $manager,
+			'manager' => $manager,
 			'logo' => $lastInsertedImageId,
 
 		);
@@ -115,9 +115,9 @@ class Team extends Controller
 
 		$id = $_POST['id'];
 
-		$teamfields = array(	
+		$teamfields = array(
 			'name' => $name,
-			'manager'  => $manager
+			'manager' => $manager
 		);
 
 		$insertedId = $viewmodel->updateRecord("teams", $teamfields, "id", $id);

@@ -1,0 +1,29 @@
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'manager' in 'field list'
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`staduimstream`.`teams`, CONSTRAINT `teams_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `manager` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`staduimstream`.`teams`, CONSTRAINT `teams_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `manager` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vip_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'premium_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'premium_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'premium_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'premium_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'premium_seats' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'logo' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'logo' in 'field list'
+Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'logo' in 'field list'
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'premuim_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'premuim_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'premuim_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
+Database error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'vip_seats' cannot be null
