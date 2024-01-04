@@ -228,7 +228,7 @@
                                                 id="city">
                                                 <?php foreach ($rows as $row): ?>
                                                     <option value="<?= $row['id'] ?>">
-                                                        <?= $row['city_name'] ?>
+                                                        <?= $row['city'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

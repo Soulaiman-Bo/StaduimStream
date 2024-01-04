@@ -471,29 +471,30 @@
     <h2 class="font-bold text-lg text-gray-600 mb-2 mt-4" style="padding-top: 4rem;padding-left: 4rem;">BILLETTERIE
       ENTRÉE PAR STADE</h2>
     <div class="flex flex-wrap justify-around">
+      <?php foreach($rows as $row):?>
       <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st1.svg" alt="stade Alassane">
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex '>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
-              ABIDJAN</span>
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'> <?= $row['Name'];?></span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
             More Info
           </a>
         </div>
       </div>
-      <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
+      <?php endforeach;?>
+      <!-- <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st2.svg" alt="STADE LA PAIX - BOUAKÉ">
         </div>
         <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
             More Info
@@ -501,16 +502,14 @@
         </div>
 
       </div>
-    </div>
-    <div class="flex flex-wrap justify-around">
       <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st3.svg" alt="stade Alassane">
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
               ABIDJAN</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -524,8 +523,8 @@
         </div>
         <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
           <div class=flex>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
             More Info
@@ -533,16 +532,14 @@
         </div>
 
       </div>
-    </div>
-    <div class="flex flex-wrap justify-around">
       <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st5.svg" alt="stade Alassane">
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
               ABIDJAN</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -556,8 +553,8 @@
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class="flex">
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;" class='font-bold'>STADE </span> LA PAIX -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;" class='font-bold'>STADE </span> LA PAIX -
               BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -565,7 +562,7 @@
           </a>
         </div>
 
-      </div>
+      </div> -->
     </div>
     <?php require_once('views/includes/footer.php') ?>
   </section>
