@@ -64,7 +64,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col justify-center px-4">
-                        <span class="text-base md:text-lg">Bilal Chbanat</span>
+                        <span class="text-base md:text-lg">
+                            <?= $_SESSION['firstname'], " ", $_SESSION['lastname'] ?>
+                        </span>
                         <span class="text-gray-400">Eastern European Time (EET), Cairo UTC +3</span>
                     </div>
                 </div>
@@ -76,20 +78,28 @@
         </section>
         <div class="border mt-4 w-[85%] mx-auto justify-center items-center text-center"></div>
         <div class="bg-white rounded p-4">
-            <form>
+            <form method="post" action="http://staduimstream.test/user/updateaction/<?php echo $user['user_ID'] ?>">
+                <div class="mb-4">
+                    <input
+                        class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="id" id="id" type="hidden" placeholder="eg. Alaa"
+                        value="<?php echo $user['user_ID'] ?>">
+                </div>
                 <div class="flex justify-around">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">First Name</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="firstName" type="text" placeholder="eg. Alaa">
+                            name="firstname" id="firstName" type="text" placeholder="eg. Alaa"
+                            value="<?php echo $user['firstname'] ?>">
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">Last Name</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="lastName" type="text" placeholder="eg. Mohamed">
+                            name="lastname" id="lastName" type="text" placeholder="eg. Mohamed"
+                            value="<?php echo $user['lastname'] ?>">
                     </div>
                 </div>
                 <div class="flex justify-around">
@@ -97,14 +107,26 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="cin">CIN/passportID</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="cin" type="text" placeholder="cin / password">
+                            name="cin" id="cin" type="text" placeholder="cin / password"
+                            value="<?php echo $user['cin'] ?>">
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">User E-mail</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="email" type="email" placeholder="eg. example@gmail.com">
+                            id="email" type="email" placeholder="eg. example@gmail.com" name="email"
+                            value="<?php echo $user['email'] ?>">
                     </div>
+                </div>
+                <div class="flex justify-around">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="cin">CIN/passportID</label>
+                        <input
+                            class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            name="phone" id="phone" type="text" placeholder="phone"
+                            value="<?php echo $user['phone'] ?>">
+                    </div>
+                  
                 </div>
                 <div class="border mt-4 w-[85%] mx-auto justify-center items-center text-center"></div>
                 <div class="flex justify-around pt-2">
@@ -112,7 +134,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password" type="password" placeholder="•••••••••••••••">
+                           name="password" id="password" type="password" placeholder="•••••••••••••••" value="teststestset">
                     </div>
 
                     <div class="mb-4">
@@ -120,14 +142,14 @@
                             Password</label>
                         <input
                             class="shadow appearance-none border rounded w-[25rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="confirmpassword" type="password" placeholder="•••••••••••••••">
+                            id="confirmpassword" type="password" placeholder="•••••••••••••••" value="teststest">
                     </div>
                 </div>
 
                 <div class="flex items-center justify-center ">
                     <button
                         class="bg-orange-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2"
-                        type="submit">Cancel</button>
+                        type="">Cancel</button>
                     <button
                         class="bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2"
                         type="submit">Save Changes</button>
