@@ -17,6 +17,9 @@ class SearchModel extends Model
                 ON M.team_2 = T2.id
                 WHERE T1.name LIKE :searchTerm OR T2.name LIKE :searchTerm";
 
+                // echo $sql;
+                // exit;
+
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
         $stmt->execute();

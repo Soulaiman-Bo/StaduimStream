@@ -12,6 +12,13 @@ class Search extends Controller
 		$staduimrows = $staduimmodel->selectRecords("stadiums");
         $staduimmodel->closeConnection();
 
+
+        $matchemodel = new SearchModel();
+        $matcherows = $matchemodel->getByTeamName("%%");
+        // var_dump($matcherows) ;
+        // exit;
+        $matchemodel->closeConnection();
+
        
         $view = $this->getView();
         require_once "$view";
@@ -28,15 +35,15 @@ class Search extends Controller
 
         $result = $searchmodel->getByTeamName($searchTerm);
 
-
         if ($result) {
-            foreach ($result as $row) {
-                echo "Date: " . $row["date"] . "<br>";
-                echo "team_1: " . $row["team_1"] . "<br>";
-                echo "team_2: " . $row["team_2"] . "<br> <br>";
-            }
-        } else {
-            echo "No results found";
+
+            http_response_code(200);
+            echo json_encode($result);
+
+        }else {
+            echo json_encode([
+                "message" => "No results found"
+            ]);
         }
 
 
