@@ -13,6 +13,7 @@
       <img src="http://staduimstream.test/public/images/logo.png" />
     </div>
 
+
     <div>
       <ul class="flex gap-10">
         <li class="font-bold text-lg text-gray-600">
@@ -26,6 +27,7 @@
         </li>
       </ul>
     </div>
+
 
     <div class="flex gap-6">
       <a href="/" class="flex gap-4 items-center cursor-pointer">
@@ -66,7 +68,7 @@
             <p class="font-bold text-2xl text-gray-600"><?= $row['team_2'] ?></p>
           </div>
         </div>
-        <a href="/" class="cursor-pointer">
+        <a href="http://staduimstream.test/matches/match/<?= $row['id'] ?>" class="cursor-pointer">
           <span class="h-14 w-36 flex items-center justify-center rounded-full text-gray-100 text-lg hover:bg-orange-600 bg-orange-500">Buy Ticket</span>
         </a>
       </div>
@@ -119,21 +121,21 @@
           data.forEach((elm) => {
 
             matchdiv = `<div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" class="w-full md:w-2/3 mx-auto flex items-center justify-between p-5 px-14 rounded-lg hover:bg-gray-200 bg-white mt-12">
-                <div class="flex items-center gap-8">
-                  <div class="flex items-center gap-8">
-                    <p class="font-bold text-2xl text-gray-600">${elm.team_1}</p>
-                    <img class="h-20" src="http://staduimstream.test/public/images/ivorycost.png" />
-                  </div>
-                  <span class="font-bold text-3xl text-gray-600">VS</span>
-                  <div class="flex items-center gap-8">
-                    <img class="h-20" src="http://staduimstream.test/public/images/guineabissau.png" />
-                    <p class="font-bold text-2xl text-gray-600">Guinea Bissau</p>
-                  </div>
-                </div>
-              <a href="/" class="cursor-pointer">
-                <span class="h-14 w-36 flex items-center justify-center rounded-full text-gray-100 text-lg hover:bg-orange-600 bg-orange-500">Buy Ticket</span>
-              </a>
-            </div>`;
+                        <div class="flex items-center gap-8">
+                          <div class="flex items-center gap-8">
+                            <p class="font-bold text-2xl text-gray-600">${elm.team_1}</p>
+                            <img class="h-20" src="http://staduimstream.test/public/images/ivorycost.png" />
+                          </div>
+                          <span class="font-bold text-3xl text-gray-600">VS</span>
+                          <div class="flex items-center gap-8">
+                            <img class="h-20" src="http://staduimstream.test/public/images/guineabissau.png" />
+                            <p class="font-bold text-2xl text-gray-600">${elm.team_2}</p>
+                          </div>
+                        </div>
+                      <a href="/matches/match/${elm.id}" class="cursor-pointer">
+                        <span class="h-14 w-36 flex items-center justify-center rounded-full text-gray-100 text-lg hover:bg-orange-600 bg-orange-500">Buy Ticket</span>
+                      </a>
+                    </div>`;
 
             match += matchdiv;
 
