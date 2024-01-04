@@ -165,9 +165,9 @@ CREATE TABLE `userrols` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
-select * from userrols
+-- select * from userrols
 
-INSERT into userrols(rolename) VALUES ('client')
+-- INSERT into userrols(rolename) VALUES ('client')
 -- Indexes for dumped tables
 --
 
