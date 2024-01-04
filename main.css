@@ -11,7 +11,7 @@ body {
 }
 
 .heroBackrround {
-  background-image: url("./pattern.svg"),
+  background-image: url("public/assets/dist/pattern.svg"),
     linear-gradient(205.21deg, #33b133 29.21%, #004930 79.56%);
   background-size: cover;
 }

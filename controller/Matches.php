@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Carbon;
+
+
 class Matches extends Controller
 {
     protected function index()
@@ -10,11 +13,47 @@ class Matches extends Controller
     }
     
 
+    private function format_date($date_str)
+    {
+        $date_object = Carbon::createFromFormat('Y-m-d H:i:s', $date_str);
+
+        $date = $date_object->format('D d M Y');
+        $hour = $date_object->format('H:i');
+
+        return ['hour' => $hour, 'date' => $date];
+    }
+
     protected function match()
     {
+        $id = $_GET['id'];
+
+        if ($id !== "") {
+
+            $viewmodel = new MatchesModel();
+            $rows = $viewmodel->selectSingleMatchJoinedWithTeams($id);
+
+            $formatted_date = $this->format_date($rows['date']);
+
+            $rows['date'] = strtoupper($formatted_date['date']);
+            $rows['hour'] = strtoupper($formatted_date['hour']);
+
+            // var_dump($rows);
+            // exit;
+
+            if ($rows) {
+                $view = $this->getView();
+                require_once "$view";
+            } else {
+                require_once "views/404.php";
+            }
+        } else {
+            require_once "views/404.php";
+        }
+
         $view = $this->getView();
         require_once "$view";
     }
+
 
     protected function add()
     {
