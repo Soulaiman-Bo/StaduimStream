@@ -73,7 +73,13 @@ class User extends Controller
 					$_SESSION['email'] = $user['email'];
 					$_SESSION['cin'] = $user['cin'];
 					$_SESSION['phone'] = $user['phone'];
-					header("Location: /home");
+					$_SESSION['rolename'] = $user['role'];
+
+					if($_SESSION['rolename'] == 1){
+						header("Location: /dashboard");
+
+					}else
+						header("Location: /home");
 					exit;
 				} else {
 					$_SESSION['passwordincorect'] = "Incorrect password";
