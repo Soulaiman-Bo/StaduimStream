@@ -3,6 +3,7 @@
 class stadium extends Controller
 {
 
+
     protected function show()
     {
         $viewmodel = new StaduimModel();
@@ -78,7 +79,7 @@ class stadium extends Controller
 
             $new_logo = $newFileName;
 
-            $uploadDir = "public/uploads/";
+            $uploadDir = "public/uploads/stadiums/";
 
             if ($fileError === 0) {
                 move_uploaded_file($fileTmpName, $uploadDir . $newFileName);
