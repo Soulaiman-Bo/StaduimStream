@@ -471,22 +471,25 @@
     <h2 class="font-bold text-lg text-gray-600 mb-2 mt-4" style="padding-top: 4rem;padding-left: 4rem;">BILLETTERIE
       ENTRÉE PAR STADE</h2>
     <div class="flex flex-wrap justify-around">
-      <?php foreach($rows as $row):?>
-      <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st1.svg" alt="stade Alassane">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex '>
-            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex items-center'> <?= $row['Name'];?></span>
+      <?php foreach ($rows as $row): ?>
+        <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500" style="width:42rem;">
+          <div>
+            <img class="w-full" src="../../<?= $row['link']; ?>" alt="stade Alassane">
           </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
+          <div class="flex gap-4 py-4 pb-4 justify-between items-center">
+            <div class='flex '>
+              <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+              <span class='flex items-center'>
+                <?= $row['Name']; ?> -
+                <?= $row['Address']; ?>
+              </span>
+            </div>
+            <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
+              More Info
+            </a>
+          </div>
         </div>
-      </div>
-      <?php endforeach;?>
+      <?php endforeach; ?>
       <!-- <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st2.svg" alt="STADE LA PAIX - BOUAKÉ">
