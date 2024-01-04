@@ -1,6 +1,5 @@
 <?php
 
-  session_start();
 // class UserModel extends Model
 // {
 // 	public function Index()
@@ -18,8 +17,6 @@ class UserModel  extends Model{
         private $password;
        
 
-    
-
         public function vrfyemail($email) {
             $this->email = $email;
             $sql = "SELECT * FROM user WHERE email = :email";
@@ -28,12 +25,5 @@ class UserModel  extends Model{
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
-        }
-
-     
-
-        public function logout() {
-            session_destroy();
-            header('Location:/auth/logout');
         }
     }

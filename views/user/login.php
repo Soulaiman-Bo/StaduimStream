@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../../public/assets/css/signin.css">
     <title>sign In</title>
 </head>
+<style>
+  .error{
+    margin-top: 1rem;
+    border: red 1px solid;
+    color: red;
+  }
+</style>
 <body>
     <header>
         <nav class=" h-28 flex justify-between items-center mx-auto max-w-[90%]">
@@ -23,7 +30,7 @@
                   <a href="/" class="cursor-pointer">Tickets</a>
                 </li>
                 <li class="font-normal text-lg text-gray-600">
-                  <a href="contactus.php" class="cursor-pointer">Contact</a>
+                  <a href="../contact/" class="cursor-pointer">Contact</a>
                 </li>
               </ul>
             </div>
@@ -105,9 +112,22 @@
                             Forgot your password?
                         </a>
                     </div>
+                    <?php if (isset($_SESSION['passwordincorect'])) {
+                    echo "<div class='error p-4 text-md text-center text-red-800 rounded-lg bg-red-300 dark:bg-red-800 dark:text-red-200 w-full'
+                            role='alert'>{$_SESSION['passwordincorect']}
+                        </div>";
+                    session_destroy();
+                } else if (isset($_SESSION['emailenco'])) {
+                    echo "<div class='error p-4 text-md text-center text-red-800 rounded-lg bg-red-300 dark:bg-red-800 dark:text-red-200 w-full'
+                            role='alert'>{$_SESSION['emailenco']}
+                        </div>";
+                    session_destroy();
+                } ?>
                 </form>
             </div>
         </div>
+        
+
         
         <div class="mt-8 md:mt-24 sm:flex sm:items-center">
             <h3 class="andertitle text-blue-500 dark:text-blue-400 sm:w-1/2">if you don’t an account <br>

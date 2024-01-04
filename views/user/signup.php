@@ -24,13 +24,13 @@
                   <a href="/" class="cursor-pointer">Tickets</a>
                 </li>
                 <li class="font-normal text-lg text-gray-600">
-                  <a href="contactus.php" class="cursor-pointer">Contact</a>
+                  <a href="../contact/" class="cursor-pointer">Contact</a>
                 </li>
               </ul>
             </div>
       
             <div class="flex gap-6">
-              <a href="singin" class="flex gap-4 items-center cursor-pointer">
+              <a href="login" class="flex gap-4 items-center cursor-pointer">
                 <svg
                   width="17"
                   height="16"

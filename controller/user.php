@@ -73,10 +73,13 @@
 						header("Location: /home");
 					exit;
 				} else {
-					echo "Incorrect password";
+				   $_SESSION['passwordincorect'] = "Incorrect password";
+				   header("Location: ../user/login");
+
 				}
 			} else {
-				echo "Email not found";
+			  $_SESSION['emailenco']  = "Email not found";
+			  header("Location: ../user/login");
 			}
 	
 			// Close the database connection
@@ -87,6 +90,10 @@
 		}
 	}
 	
+	public function logout() {
+		session_destroy();
+		header('Location:/user/login');
+	}
 
 		
 }
