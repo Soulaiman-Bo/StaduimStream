@@ -8,6 +8,7 @@ module.exports = {
             "./views/search/*.php",
             "./views/profile/*.php",
             "./views/includes/*.php",
+            "./views/matches/*.php",
           ],
   theme: {
     extend: {

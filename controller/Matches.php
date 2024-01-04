@@ -7,9 +7,11 @@ class Matches extends Controller
 {
     protected function index()
     {
+       
         $view = $this->getView();
         require_once "$view";
     }
+    
 
     private function format_date($date_str)
     {

@@ -10,59 +10,8 @@
     <title>sign Up</title>
 </head>
 <body>
-<header>
-        <nav class=" h-28 flex justify-between items-center mx-auto max-w-[90%]">
-            <div>
-            <img src="http://staduimstream.test/public/images/logo.png" />
-            </div>
-            <div>
-              <ul class="flex gap-10">
-                <li class="font-bold text-lg text-gray-600">
-                  <a href="/" class="cursor-pointer">About</a>
-                </li>
-                <li class="font-normal text-lg text-gray-600">
-                  <a href="/" class="cursor-pointer">Tickets</a>
-                </li>
-                <li class="font-normal text-lg text-gray-600">
-                  <a href="../contact/" class="cursor-pointer">Contact</a>
-                </li>
-              </ul>
-            </div>
-      
-            <div class="flex gap-6">
-              <a href="login" class="flex gap-4 items-center cursor-pointer">
-                <svg
-                  width="17"
-                  height="16"
-                  viewBox="0 0 17 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14.0417 7.74996C14.0417 11.3168 11.1502 14.2083 7.58333 14.2083C4.01649 14.2083 1.125 11.3168 1.125 7.74996C1.125 4.18312 4.01649 1.29163 7.58333 1.29163C11.1502 1.29163 14.0417 4.18312 14.0417 7.74996Z"
-                    stroke="#6D8493"
-                    stroke-width="1.25"
-                  />
-                  <path
-                    d="M13 12.7499L15.5 15.2499"
-                    stroke="#6D8493"
-                    stroke-width="1.25"
-                    stroke-linecap="round"
-                  />
-                </svg>
-      
-                <span  class="text-lg">Login</span>
-              </a>
-      
-              <a href="signup" class="cursor-pointer">
-                <span
-                  class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900"
-                  >Sign up</span
-                >
-              </a>
-            </div>
-          </nav>
-    </header>
+<?php include 'views/includes/header.php' ?>
+
 
     <main>
     <section class="bg-white">
@@ -104,7 +53,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 1c-2.525 0-4.842 1.04-6.504 2.73C4.01 5.461 3 8.35 3 12s1.01 6.539 2.496 8.27C7.157 21.96 9.475 23 12 23s4.842-1.04 6.504-2.73C19.99 18.539 21 15.65 21 12s-1.01-6.539-2.496-8.27C16.843 2.04 14.525 1 12 1zm0 2c1.915 0 3.682.775 4.95 2.05A17.939 17.939 0 0021 12c0 2.5-.5 4.873-1.403 7.008-1.267 2.516-3.046 4.586-5.198 6.05C13.378 22.166 12.702 22 12 22s-1.378.166-1.399.058C8.044 18.586 6.265 16.516 4.103 15.05 2.5 14.1 2 13.1 2 12s.5-2.1 2.103-3.05C6.265 7.484 8.044 5.414 10.196 3.95 11.55 3.29 11.769 3 12 3zM12 17v2M12 21h.01"></path>
                         </svg>
                         </span>
-                        <input type="email" name="email" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Phone">
+                        <input type="number" name="phone" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="phone">
                     </div>
 
                     <div class="relative flex items-center mt-4">
@@ -114,7 +63,7 @@
                         </svg>
 
                         </span>
-                        <input type="cin" name="cin" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Cin">
+                        <input type="text" name="cin" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Cin">
                     </div>
                     
                     <div class="relative flex items-center mt-4">
@@ -123,7 +72,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </span>
-                        <input type="number" name="phone" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address">
+                        <input type="email" name="email" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email Adresse">
                     </div>
 
                     <div class="relative flex items-center mt-4">

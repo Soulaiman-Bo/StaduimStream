@@ -26,7 +26,9 @@ body {
 
 .backgroundImagePattern1 {
  
-   background-image: url("http://staduimstream.test/public/assets/dist/afaaak.png"); 
+   background-image: url("http://staduimstream.test/public/assets/dist/afaaak.png");
+   background-size: cover;
+   background-repeat: no-repeat;
 }
 
 
