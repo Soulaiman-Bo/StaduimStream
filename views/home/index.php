@@ -24,13 +24,46 @@
           <a href="/" class="cursor-pointer">Tickets</a>
         </li>
         <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Contact</a>
+          <a href="http://staduimstream.test/Contact/" class="cursor-pointer">Contact</a>
         </li>
       </ul>
     </div>
 
+
+    <?php if(isset($_SESSION['firstname'])){ ?>
+      <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <span class="sr-only">Open user menu</span>
+        <img class="w-8 h-8 rounded-full" src="http://staduimstream.test/public/images/meedY.jpg" alt="user photo">
+      </button>
+      <!-- Dropdown menu -->
+      <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+        <div class="px-4 py-3">
+          <span class="block text-sm text-gray-900 dark:text-white"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></span>
+          <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php echo $_SESSION['email'] ?></span>
+        </div>
+        <ul class="py-2" aria-labelledby="user-menu-button">
+          <li>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><?php ?>Dashboard</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">profile</a>
+          </li>
+          <li>
+            <a href="/user/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+          </li>
+        </ul>
+      </div>
+      <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+  </div>
+   <?php  }else{ ?>
     <div class="flex gap-6">
-      <a href="/" class="flex gap-4 items-center cursor-pointer">
+      <a href="../user/login" class="flex gap-4 items-center cursor-pointer">
         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14.0417 7.74996C14.0417 11.3168 11.1502 14.2083 7.58333 14.2083C4.01649 14.2083 1.125 11.3168 1.125 7.74996C1.125 4.18312 4.01649 1.29163 7.58333 1.29163C11.1502 1.29163 14.0417 4.18312 14.0417 7.74996Z"
@@ -41,11 +74,12 @@
         <span class="text-lg">Login</span>
       </a>
 
-      <a href="/" class="cursor-pointer">
+      <a href="../user/signup" class="cursor-pointer">
         <span class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900">Sign
           up</span>
       </a>
     </div>
+    <?php }  ?>
   </nav>
   <section class="backgroundImage">
     <img class="w-full" src="../../public/images/landingpage.svg" alt="">
@@ -156,7 +190,6 @@
       <div class="flex flex-wrap flex-col gap-10">
         <div class="flex flex-wrap gap-10 justify-center">
           <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-
             <div class="px-6 py-4 " style="background-color: white; width: 18rem; height: 18rem;">
               <div class="font-bold text-xl mb-2 text-center">Group A</div>
               <div class="flex items-center gap-4">
@@ -471,29 +504,33 @@
     <h2 class="font-bold text-lg text-gray-600 mb-2 mt-4" style="padding-top: 4rem;padding-left: 4rem;">BILLETTERIE
       ENTRÉE PAR STADE</h2>
     <div class="flex flex-wrap justify-around">
-      <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st1.svg" alt="stade Alassane">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex '>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
-              ABIDJAN</span>
+      <?php foreach ($rows as $row): ?>
+        <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500" style="width:42rem;">
+          <div>
+            <img class="w-full" src="../../<?= $row['link']; ?>" alt="stade Alassane">
           </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
+          <div class="flex gap-4 py-4 pb-4 justify-between items-center">
+            <div class='flex '>
+              <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+              <span class='flex items-center'>
+                <?= $row['Name']; ?> -
+                <?= $row['Address']; ?>
+              </span>
+            </div>
+            <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
+              More Info
+            </a>
+          </div>
         </div>
-      </div>
-      <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
+      <?php endforeach; ?>
+      <!-- <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st2.svg" alt="STADE LA PAIX - BOUAKÉ">
         </div>
         <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
             More Info
@@ -501,16 +538,14 @@
         </div>
 
       </div>
-    </div>
-    <div class="flex flex-wrap justify-around">
       <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st3.svg" alt="stade Alassane">
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
               ABIDJAN</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -524,8 +559,8 @@
         </div>
         <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
           <div class=flex>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
             More Info
@@ -533,16 +568,14 @@
         </div>
 
       </div>
-    </div>
-    <div class="flex flex-wrap justify-around">
       <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
         <div>
           <img class="w-full" src="../../public/images/st5.svg" alt="stade Alassane">
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
               ABIDJAN</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -556,8 +589,8 @@
         </div>
         <div class="flex gap-4 py-4 pb-4 justify-between items-center">
           <div class="flex">
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;" class='font-bold'>STADE </span> LA PAIX -
+            <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+            <span class='flex items-center'><span style="color:#EB7107;" class='font-bold'>STADE </span> LA PAIX -
               BOUAKÉ</span>
           </div>
           <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
@@ -565,9 +598,9 @@
           </a>
         </div>
 
-      </div>
+      </div> -->
     </div>
-    <?php require_once('views/includes/footer.php') ?>
+    <?php require('views/includes/footer.php') ?>
   </section>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>

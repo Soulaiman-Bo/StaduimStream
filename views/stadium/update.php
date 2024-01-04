@@ -175,23 +175,24 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Edit Team</p>
+                                <p class="mb-0">Edit Stadium</p>
                             </div>
                         </div>
 
-                        <form action="http://staduimstream.test/Team/updateaction" id="addteamform"
+                        <form action="http://staduimstream.test/stadium/updateaction" id="addteamform"
                             enctype="multipart/form-data">
-                            <input type="hidden" name="id" value="<?php echo $rows['id'] ?>" id="team_name"
-                                placeholder="Enter team name" class="form-control" required>
+                            <input type="hidden" name="id" value="<?php echo $stadiums['id'] ?>" id="team_name" placeholder="Enter team name"
+                                class="form-control">
+
                             <div class="card-body">
-                                <p class="text-uppercase text-sm">User Information</p>
+                                <p class="text-uppercase text-sm">Stadium Information</p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label id="team_name" for="team_name" class="form-control-label">Team
+                                            <label id="team_name" for="team_name" class="form-control-label">Stadium 
                                                 Name</label>
-                                            <input class="form-control" type="text" value="<?php echo $rows['name'] ?>"
-                                                name="name" id="team_name" placeholder="Enter team name" required>
+                                            <input class="form-control" type="text" value="<?php echo $stadiums['Name'] ?>" 
+                                                name="Name" id="team_name" placeholder="Enter team name" required>
                                         </div>
                                     </div>
 
@@ -200,21 +201,70 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" id="logo_url"
-                                                    for="logo_url">Logo</label>
-                                                <input type="file" name="logo" id="logo_url" accept="image/*"
-                                                    placeholder="Enter foundation year" class="form-control" >
-                                            </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="logo_url" for="logo_url">Stadium
+                                                Images</label>
+                                            <input type="file" name="img" id="logo_url" accept="image/*"
+                                                class="form-control" required>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" id="current_manager"
-                                                    for="current_manager">Current Manager</label>
-                                                <input type="text" name="manager" id="current_manager" value="<?php echo $rows['manager'] ?>"
-                                                    class="form-control" placeholder="current manager">
-                                            </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="address_label"
+                                                for="address">Address</label>
+                                            <input type="text" name="Address" id="address" class="form-control"  value="<?php echo $stadiums['Address'] ?>"
+                                                placeholder="Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="capacity_label"
+                                                for="capacity">Capacity</label>
+                                            <input type="number" name="capacity" id="capacity" class="form-control"  value="<?php echo $stadiums['capacity'] ?>"
+                                                placeholder="Capacity">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="city_label" for="city">City</label>
+                                            <select class="form-select" aria-label="Default select example" name="city" id="city">
+                                                <?php foreach ($cities as $row): ?>
+                                                    <option value=<?= $row['id'] ?>>
+                                                        <?= $row['city'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="vip_seats_label" for="vip_seats">VIP
+                                                Seats</label>
+                                            <input type="number" name="vip_seats" id="vip_seats" class="form-control" value="<?php echo $stadiums['vip_seats'] ?>"
+                                                placeholder="VIP seats">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="premuim_seats_label"
+                                                for="premuim_seats">Premium Seats</label>
+                                            <input type="number" name="premuim_seats" id="premuim_seats" value="<?php echo $stadiums['premuim_seats'] ?>"
+                                                class="form-control" placeholder="Premium seats">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="basic_seats_label"
+                                                for="basic_seats">Basic Seats</label>
+                                            <input type="number" name="basic_seats" id="basic_seats" value="<?php echo $stadiums['basic_seats'] ?>"
+                                                class="form-control" placeholder="Basic seats">
                                         </div>
                                     </div>
 
@@ -228,18 +278,14 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <button type="submit" id="submit" class="btn btn-primary btn-block">Update
-                                                Team</button>
+                                            <button type="submit" id="submit" class="btn btn-primary btn-block">update
+                                                Stadium</button>
                                         </div>
                                     </div>
-
                                 </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
@@ -292,7 +338,7 @@
                 if (response.ok) {
                     const responseData = await response.json();
 
-                    if (responseData.message != "Team Updated successfully!") {
+                    if (responseData.message != "Stadium Updated successfully!") {
                         throw new Error(`Error: ${response.status} - ${response.message}`);
                     }
 

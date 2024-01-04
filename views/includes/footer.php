@@ -1,4 +1,4 @@
-<footer class="bg-footer">
+<footer class="bg-footer mt-12">
     <div class="flex flex-col  items-center">
         <div><img src="../../public/images/logo.svg" alt="logo"></div>
         <div class="text-white">

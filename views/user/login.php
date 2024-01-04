@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../../public/assets/css/signin.css">
     <title>sign In</title>
 </head>
+<style>
+  .error{
+    margin-top: 1rem;
+    border: red 1px solid;
+    color: red;
+  }
+</style>
 <body>
     <header>
         <nav class=" h-28 flex justify-between items-center mx-auto max-w-[90%]">
@@ -23,13 +30,13 @@
                   <a href="/" class="cursor-pointer">Tickets</a>
                 </li>
                 <li class="font-normal text-lg text-gray-600">
-                  <a href="contactus.php" class="cursor-pointer">Contact</a>
+                  <a href="../contact/" class="cursor-pointer">Contact</a>
                 </li>
               </ul>
             </div>
       
             <div class="flex gap-6">
-              <a href="singin.php" class="flex gap-4 items-center cursor-pointer">
+              <a href=http://staduimstream.test/user/login class="flex gap-4 items-center cursor-pointer">
                 <svg
                   width="17"
                   height="16"
@@ -53,7 +60,7 @@
                 <span  class="text-lg">Login</span>
               </a>
       
-              <a href="signup.php" class="cursor-pointer">
+              <a href="http://staduimstream.test/user/signup" class="cursor-pointer">
                 <span
                   class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900"
                   >Sign up</span
@@ -74,9 +81,8 @@
                     </h1>
                     <img  class="img absolute top-[-321px]" src="http://staduimstream.test/public/images/Background.png" alt="">
             </div>
-
             <div class="mt-8 lg:w-1/2 lg:mt-0">
-                <form class="form w-full lg:max-w-xl">
+                <form class="form w-full lg:max-w-xl" method="POST" action="http://staduimstream.test/user/loginAction">
                     <div class="relative flex items-center">
                         <span class="absolute">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-3 text-gray-300 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -84,7 +90,7 @@
                             </svg>
                         </span>
                         
-                        <input type="email" class="block w-full py-6 text-gray-800 bg-white border rounded-lg px-11   focus:border-blue-800 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address">
+                        <input type="email" name="email" class="block w-full py-6 text-gray-800 bg-white border rounded-lg px-11   focus:border-blue-800 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address">
                     </div>
 
                     <div class="relative flex items-center mt-4">
@@ -94,7 +100,7 @@
                             </svg>
                         </span>
                         
-                        <input type="password" class="block w-full px-10 py-6 text-gray-700 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password">
+                        <input type="password"   name="password" class="block w-full px-10 py-6 text-gray-700 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password">
                     </div>
                     
                     <div class="mt-8 md:flex md:items-center">
@@ -106,13 +112,26 @@
                             Forgot your password?
                         </a>
                     </div>
+                    <?php if (isset($_SESSION['passwordincorect'])) {
+                    echo "<div class='error p-4 text-md text-center text-red-800 rounded-lg bg-red-300 dark:bg-red-800 dark:text-red-200 w-full'
+                            role='alert'>{$_SESSION['passwordincorect']}
+                        </div>";
+                    session_destroy();
+                } else if (isset($_SESSION['emailenco'])) {
+                    echo "<div class='error p-4 text-md text-center text-red-800 rounded-lg bg-red-300 dark:bg-red-800 dark:text-red-200 w-full'
+                            role='alert'>{$_SESSION['emailenco']}
+                        </div>";
+                    session_destroy();
+                } ?>
                 </form>
             </div>
         </div>
         
+
+        
         <div class="mt-8 md:mt-24 sm:flex sm:items-center">
             <h3 class="andertitle text-blue-500 dark:text-blue-400 sm:w-1/2">if you don’t an account <br>
-            you can <a href="signup.php" class="z-50"> Register here !</a></h3>
+            you can <a href="http://staduimstream.test/user/signup" class="z-50"> Register here !</a></h3>
             
             <div class="links flex items-center mt-4 sm:mt-0 -mx-1.5 sm:w-1/2">
                 <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">

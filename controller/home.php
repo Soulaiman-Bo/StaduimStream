@@ -4,10 +4,10 @@ class Home extends Controller
 {
     protected function index()
     {
-        // $viewmodel = new TeamModel();
-        // $rows = $viewmodel->selectRecords("teams");
+        $viewmodel = new StaduimModel();
+        $rows = $viewmodel->selectImage("stadiums");
         $view = $this->getView();
-        
+
         require_once "$view";
     }
 }
