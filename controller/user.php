@@ -70,6 +70,12 @@
 					$_SESSION['lastname'] = $user['lastname'];
 					$_SESSION['email'] = $user['email'];
 					$_SESSION['phone'] = $user['phone'];
+					$_SESSION['rolename'] = $user['role'];
+
+					if($_SESSION['rolename'] == 1){
+						header("Location: /dashboard");
+
+					}else
 						header("Location: /home");
 					exit;
 				} else {
