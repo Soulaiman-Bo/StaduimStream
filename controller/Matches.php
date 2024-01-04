@@ -48,6 +48,7 @@ class Matches extends Controller
             }
         } else {
             require_once "views/404.php";
+            exit;
         }
 
         $view = $this->getView();

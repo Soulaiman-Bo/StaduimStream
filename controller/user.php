@@ -62,7 +62,7 @@ class User extends Controller
 
 			// Verify if the email exists in the database
 			$user = $viewmodel->vrfyemail($email);
-			
+
 
 			if ($user) {
 				// If the email exists, verify the password
@@ -75,10 +75,10 @@ class User extends Controller
 					$_SESSION['phone'] = $user['phone'];
 					$_SESSION['rolename'] = $user['role'];
 
-					if($_SESSION['rolename'] == 1){
+					if ($_SESSION['rolename'] == 1) {
 						header("Location: /dashboard");
 
-					}else
+					} else
 						header("Location: /home");
 					exit;
 				} else {
@@ -152,6 +152,40 @@ class User extends Controller
 			echo json_encode([
 				"message" => $message,
 				"id" => $insertedId
+			]);
+		}
+	}
+
+	protected function delete()
+	{
+		$id = $_GET['id'];
+
+		if ($id !== "") {
+			$usermodel = new UserModel();
+			$row = $usermodel->selectSingleRecords("user", "*", "user_ID = $id");
+			$view = $this->getView($usermodel->Index(), false);
+			require_once "$view";
+		} else {
+			echo '<h1>ERROR 404: Bad Request</h1>';
+		}
+	}
+
+	protected function deleteaction()
+	{
+		extract($_POST);
+
+		$viewmodel = new UserModel();
+
+		$id = $_GET['id'];
+
+		$result = $viewmodel->deleteRecord("user", "user_ID", $id);
+
+		if ($result) {
+			$message = "user deleted successfully!";
+			http_response_code(200);
+			echo json_encode([
+				"message" => $message,
+				"Id" => $result
 			]);
 		}
 	}
