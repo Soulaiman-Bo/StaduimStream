@@ -89,7 +89,7 @@
     <div class="swiper">
       <div class=" swiper-wrapper">
         <?php foreach($matchs as $match): ?>
-        <a class="swiper-slide" href="http://staduimstream.test/matches/match/id">
+        <a class="swiper-slide" href="http://staduimstream.test/matches/match/<?=  $match['id'] ?>">
         
           <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
             <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
