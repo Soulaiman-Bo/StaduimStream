@@ -24,13 +24,13 @@
                   <a href="/" class="cursor-pointer">Tickets</a>
                 </li>
                 <li class="font-normal text-lg text-gray-600">
-                  <a href="contactus.php" class="cursor-pointer">Contact</a>
+                  <a href="../contact/" class="cursor-pointer">Contact</a>
                 </li>
               </ul>
             </div>
       
             <div class="flex gap-6">
-              <a href="singin.php" class="flex gap-4 items-center cursor-pointer">
+              <a href="login" class="flex gap-4 items-center cursor-pointer">
                 <svg
                   width="17"
                   height="16"
@@ -54,7 +54,7 @@
                 <span  class="text-lg">Login</span>
               </a>
       
-              <a href="signup.php" class="cursor-pointer">
+              <a href="signup" class="cursor-pointer">
                 <span
                   class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900"
                   >Sign up</span
@@ -78,7 +78,7 @@
             </div>
 
             <div class="mt-8 lg:w-1/2 lg:mt-0">
-                <form class="form w-full lg:max-w-xl">
+                <form class="form w-full lg:max-w-xl"  method="POST" action="http://staduimstream.test/user/signupaction">
 
                     <div class="relative flex items-center mt-4">
                     <span class="absolute">
@@ -86,7 +86,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a5.999 5.999 0 100 12 5.999 5.999 0 000-12zm0 10a1 1 0 110-2 1 1 0 010 2z"/>
                     </svg>
                     </span>
-                       <input type="text" name="Fristname" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Frist Name">
+                       <input type="text" name="Firstname" class="block w-full py-6 text-gray-700 bg-white border rounded-lg px-11   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Frist Name">
                     </div>
 
                     <div class="relative flex items-center mt-4">
@@ -191,10 +191,8 @@
         </div>
     </div>
 </section>
-
-
     </main>
-    
+
 </body>
 
 </html>
