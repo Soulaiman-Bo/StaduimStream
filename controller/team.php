@@ -10,7 +10,7 @@ class Team extends Controller
 		$view = $this->getView();
 		require_once $view;
 	}
-	
+
 	protected function update()
 	{
 		$id = $_GET['id'];
@@ -51,7 +51,7 @@ class Team extends Controller
 			echo '<h1>ERROR 404: Bad Request</h1>';
 		}
 	}
-	
+
 	protected function addaction()
 	{
 		extract($_POST);
@@ -69,7 +69,7 @@ class Team extends Controller
 			$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
 
 			// Generate a unique filename to avoid overwriting
-			$newFileName = $name .  "_" . uniqid('', true) . "." . $fileExt;
+			$newFileName = $name . "_" . uniqid('', true) . "." . $fileExt;
 
 
 			$new_logo = $newFileName;
@@ -86,10 +86,10 @@ class Team extends Controller
 		$viewmodel = new TeamModel();
 		$lastInsertedImageId = $viewmodel->insertRecord("images", ['link' => $new_logo]);
 
-		$teamfields = array(	
+		$teamfields = array(
 
 			'name' => $name,
-			'manager'  => $manager,
+			'manager' => $manager,
 			'logo' => $lastInsertedImageId,
 
 		);
@@ -113,11 +113,11 @@ class Team extends Controller
 		extract($_POST);
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
-		$teamfields = array(	
+		$teamfields = array(
 			'name' => $name,
-			'manager'  => $manager
+			'manager' => $manager
 		);
 
 		$insertedId = $viewmodel->updateRecord("teams", $teamfields, "id", $id);
@@ -128,7 +128,7 @@ class Team extends Controller
 			http_response_code(200);
 			echo json_encode([
 				"message" => $message,
-				"Id" => $insertedId
+				"id" => $insertedId
 			]);
 		}
 	}
@@ -139,9 +139,9 @@ class Team extends Controller
 
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
-		$result = $viewmodel->deleteRecord("teams", "team_id", $id);
+		$result = $viewmodel->deleteRecord("teams", "id", $id);
 
 		if ($result) {
 			$message = "Team deleted successfully!";

@@ -17,10 +17,10 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="http://staduimstream.test/public/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,300,700' rel='stylesheet'
-        type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css'>
+    <link rel="stylesheet" href="./style.css">
+
+
     <!-- CSS Files -->
     <link id="pagestyle" href="http://staduimstream.test/public/assets/css/argon-dashboard.css?v=2.0.4"
         rel="stylesheet" />
@@ -33,6 +33,8 @@
     </div>
 
     <?php require_once "views/includes/sidebar.php" ?>
+
+
 
     <div class="main-content position-relative max-height-vh-100 h-100">
         <!-- Navbar -->
@@ -175,52 +177,91 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Edit Team</p>
+                                <p class="mb-0">Create a Stadium</p>
                             </div>
                         </div>
 
-                        <form action="http://staduimstream.test/Team/updateaction" id="addteamform"
+                        <form action="http://staduimstream.test/stadium/addaction" id="addteamform"
                             enctype="multipart/form-data">
-                            <input type="hidden" name="id" value="<?php echo $rows['id'] ?>" id="team_name"
-                                placeholder="Enter team name" class="form-control" required>
                             <div class="card-body">
-                                <p class="text-uppercase text-sm">User Information</p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label id="team_name" for="team_name" class="form-control-label">Team
+                                            <label id="stad_name" for="stad_name" class="form-control-label">Stadium
                                                 Name</label>
-                                            <input class="form-control" type="text" value="<?php echo $rows['name'] ?>"
-                                                name="name" id="team_name" placeholder="Enter team name" required>
+                                            <input class="form-control" type="text" name="Name" id="stad_name"
+                                                placeholder="Enter team name" required>
                                         </div>
                                     </div>
 
-                                </div>
-
-
-                                <div class="row">
                                     <div class="col-md-6">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" id="logo_url"
-                                                    for="logo_url">Logo</label>
-                                                <input type="file" name="logo" id="logo_url" accept="image/*"
-                                                    placeholder="Enter foundation year" class="form-control" >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" id="current_manager"
-                                                    for="current_manager">Current Manager</label>
-                                                <input type="text" name="manager" id="current_manager" value="<?php echo $rows['manager'] ?>"
-                                                    class="form-control" placeholder="current manager">
-                                            </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="logo_url" for="logo_url">Stadium
+                                                Images</label>
+                                            <input type="file" name="img" id="logo_url" accept="image/*"
+                                                class="form-control" required>
                                         </div>
                                     </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="address_label"
+                                                for="address">Address</label>
+                                            <input type="text" name="Address" id="address" class="form-control"
+                                                placeholder="Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="capacity_label"
+                                                for="capacity">Capacity</label>
+                                            <input type="number" name="capacity" id="capacity" class="form-control"
+                                                placeholder="Capacity">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="city_label" for="city">City</label>
+                                            <select class="form-select" aria-label="Default select example" name="city"
+                                                id="city">
+                                                <?php foreach ($rows as $row): ?>
+                                                    <option value="<?= $row['id'] ?>">
+                                                        <?= $row['city_name'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="vip_seats_label" for="vip_seats">VIP
+                                                Seats</label>
+                                            <input type="number" name="vip_seats" id="vip_seats" class="form-control" placeholder="VIP seats">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="premuim_seats_label" for="premuim_seats">Premium Seats</label>
+                                            <input type="number" name="premuim_seats" id="premuim_seats" class="form-control"
+                                                placeholder="Premium seats">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" id="basic_seats_label" for="basic_seats">Basic Seats</label>
+                                            <input type="number" name="basic_seats" id="basic_seats" class="form-control"
+                                                placeholder="Basic seats">
+                                        </div>
+                                    </div>
+                        
                                     <hr class="horizontal dark">
                                     <p class="text-uppercase text-sm">About The Team</p>
-
+                        
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -228,17 +269,17 @@
                                             </div>
                                         </div>
                                     </div>
-
+                        
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <button type="submit" id="submit" class="btn btn-primary btn-block">Update
-                                                Team</button>
+                                            <button type="submit" id="submit" class="btn btn-primary btn-block">Add
+                                                Stadium</button>
                                         </div>
                                     </div>
-
+                        
+                        
                                 </div>
                         </form>
-
 
                     </div>
                 </div>
@@ -256,7 +297,7 @@
     <script src="http://staduimstream.test/public/assets/js/smooth-scrollbar.min.js"></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
-
+    <script src="./script.js"></script>
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -292,21 +333,21 @@
                 if (response.ok) {
                     const responseData = await response.json();
 
-                    if (responseData.message != "Team Updated successfully!") {
+                    if (responseData.message != 'Stadium inserted successfully!') {
                         throw new Error(`Error: ${response.status} - ${response.message}`);
                     }
 
-                    swal("Update Team", responseData.message, "success")
+                    swal("Create Team", responseData.message, "success")
                     console.log(responseData.message);
                 }
 
                 if (!response.ok) {
+
                     throw new Error(`Error: ${response.status} - ${response.message}`);
                 }
 
-
             } catch (error) {
-                swal("Update Team", "Failed to update", "error")
+                swal("Create Team", "Failed to isert", "error")
                 console.error(error);
             }
 

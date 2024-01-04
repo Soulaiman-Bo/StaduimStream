@@ -10,7 +10,6 @@ class Matches extends Controller
 
     protected function match()
     {
-
         $view = $this->getView();
         require_once "$view";
     }

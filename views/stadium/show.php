@@ -184,8 +184,8 @@
                             <h6>Teams table</h6>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="http://staduimstream.test/Team/add" style="margin-block: 2rem;"
-                                        class="btn btn-primary btn-block">Add New Team</a>
+                                    <a href="http://staduimstream.test/stadium/add" style="margin-block: 2rem;"
+                                        class="btn btn-primary btn-block">Add New Stadium</a>
                                 </div>
                             </div>
                         </div>
@@ -197,10 +197,25 @@
                                         <tr>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Team Name</th>
+                                                Stadium Name</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Team Manager</th>
+                                                Stadium Address</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium City</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium Capacity</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium VIP seats</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium Premuim seats</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Stadium basics seats</th>
                                             <th class="text-secondary opacity-7"></th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
@@ -210,18 +225,45 @@
                                             <tr class="pl-3">
                                                 <td>
                                                     <p>
-                                                        <?= $row['name'] ?>
+                                                        <?= $row['Name'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['Address'] ?>
+                                                    </p>
+                                                </td>
+
+
+                                                <td>
+                                                    <p>
+                                                        <?= $row['city'] ?>
                                                     </p>
                                                 </td>
 
                                                 <td>
                                                     <p>
-                                                        <?= $row['firstname'], " ", $row['lastname'] ?>
+                                                        <?= $row['capacity'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['vip_seats'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['premuim_seats'] ?>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <?= $row['basic_seats'] ?>
                                                     </p>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/update/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/stadium/update/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-info" data-toggle="tooltip"
                                                         data-original-title="Edit user">
                                                         Edit
@@ -229,10 +271,9 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="http://staduimstream.test/Team/delete/<?= $row['id'] ?>"
+                                                    <a href="http://staduimstream.test/stadium/delete/<?= $row['id'] ?>"
                                                         class="badge badge-sm bg-gradient-danger" data-toggle="tooltip"
-                                                        data-original-title="Edit user"
-                                                        >
+                                                        data-original-title="Edit user">
                                                         Delete
                                                     </a>
                                                     <!-- onclick="return confirm('Do you really want to Delete ?');"  -->
