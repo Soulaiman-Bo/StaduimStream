@@ -168,11 +168,12 @@
     </nav>
     <section
       class="backgroundImagePattern1"
-      style="width: 100%; height: 481px;"
+      style=" height: 481px;"
     >
+    
       <div
         class="flex justify-around p-5"
-        style="color: white; width: 100%; height: 481px"
+        style="color: white; ; height: 481px"
       >
         <div class="flex items-center gap-3 text-2xl">
           <span>Ivory cost</span>

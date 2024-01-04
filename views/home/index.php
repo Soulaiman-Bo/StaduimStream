@@ -20,7 +20,29 @@
     <h2 class="font-bold text-lg text-gray-600  mb-2 mt-4">Upcoming Matchs</h2>
     <div class="swiper">
       <div class=" swiper-wrapper">
-        <div class="swiper-slide">
+        <?php foreach($matchs as $match): ?>
+        <a class="swiper-slide" href="http://staduimstream.test/matches/match/<?=  $match['id'] ?>">
+        
+          <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+            <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
+            <div class="px-6 py-4 flex gap-10">
+              <div class="flex flex-col justify-center">
+                <span>Nov</span>
+              <span><?=  $match['date'] ?></span>
+              </div>
+              <div class="flex flex-col ">
+              <span><?= $match['team_1'] ?></span> vs <?= $match['team_2'] ?>
+                <!-- <span>$150</span>
+                <span>Ahmed ben Ali stadium</span> -->
+              </div>
+
+            </div>
+
+          </div>
+          
+        </a>
+        <?php endforeach; ?>
+        <!-- <div class="swiper-slide">
           <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
             <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
             <div class="px-6 py-4 flex gap-10">
@@ -90,25 +112,7 @@
 
             </div>
 
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
-            <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
-            <div class="px-6 py-4 flex gap-10">
-              <div class="flex flex-col justify-center">
-                <span>Nov</span>
-                <span>23</span>
-              </div>
-              <div class="flex flex-col ">
-                <span class="font-bold text-s ">cote d'Ivoir vs Guinée</span>
-                <span>$150</span>
-                <span>Ahmed ben Ali stadium</span>
-              </div>
-
-            </div>
-
-          </div>
+          </div> -->
         </div>
 
       </div>
