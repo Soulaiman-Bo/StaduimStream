@@ -16,6 +16,7 @@
 
 
 
+
 	protected function signupAction() {
 		$viewmodel = new UserModel();
 	
@@ -49,18 +50,43 @@
 		
 	}
 
-    protected function loginAction() {
-		$viewmodel = new UserModel();
-		if (isset($_POST['login'])) {
-			// get form data
+	protected function loginAction() {
+		// Check if email and password are provided in the form
+		if (isset($_POST['email']) && isset($_POST['password'])) {
 			$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 			$password = $_POST['password'];
-			
-			$viewmodel ->vrfyemail($email);
-			
 	
+			// Instantiate the UserModel
+			$viewmodel = new UserModel();
+	
+			// Verify if the email exists in the database
+			$user = $viewmodel->vrfyemail($email);
+	
+			if ($user) {
+				// If the email exists, verify the password
+				if (password_verify($password, $user['password'])) {
+					$_SESSION['user_id'] = $user['id'];
+					$_SESSION['firstname'] = $user['firstname'];
+					$_SESSION['lastname'] = $user['lastname'];
+					$_SESSION['email'] = $user['email'];
+					$_SESSION['phone'] = $user['phone'];
+						header("Location: /home");
+					exit;
+				} else {
+					echo "Incorrect password";
+				}
+			} else {
+				echo "Email not found";
+			}
+	
+			// Close the database connection
+			$viewmodel->closeConnection();
+		} else {
+			// Email or password not provided
+			echo "Please provide an email and password";
 		}
 	}
+	
 
 		
 }

@@ -74,7 +74,6 @@
                     </h1>
                     <img  class="img absolute top-[-321px]" src="http://staduimstream.test/public/images/Background.png" alt="">
             </div>
-
             <div class="mt-8 lg:w-1/2 lg:mt-0">
                 <form class="form w-full lg:max-w-xl" method="POST" action="http://staduimstream.test/user/loginAction">
                     <div class="relative flex items-center">
@@ -84,7 +83,7 @@
                             </svg>
                         </span>
                         
-                        <input type="email" class="block w-full py-6 text-gray-800 bg-white border rounded-lg px-11   focus:border-blue-800 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address">
+                        <input type="email" name="email" class="block w-full py-6 text-gray-800 bg-white border rounded-lg px-11   focus:border-blue-800 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address">
                     </div>
 
                     <div class="relative flex items-center mt-4">
@@ -94,7 +93,7 @@
                             </svg>
                         </span>
                         
-                        <input type="password" class="block w-full px-10 py-6 text-gray-700 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password">
+                        <input type="password"   name="password" class="block w-full px-10 py-6 text-gray-700 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password">
                     </div>
                     
                     <div class="mt-8 md:flex md:items-center">
