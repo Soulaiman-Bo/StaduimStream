@@ -27,4 +27,4 @@ class MatchesModel extends Model
 
 		return $result;
 	}
-}
+	
