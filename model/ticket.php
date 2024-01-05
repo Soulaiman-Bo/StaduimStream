@@ -31,7 +31,6 @@ class TicketModel extends Model
 		}
 	}
 
-
 	public function custom_select_query($table, $columns = "*", $where = null, $goupBy = null)
 	{
 		// (`ticket`, "`category`, count(category) AS count",  "`matche` = 1", "category")
@@ -54,8 +53,6 @@ class TicketModel extends Model
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
-
-		
 	}
 
 	public function select_stadium_based_on_match_id($matchId)
@@ -67,8 +64,26 @@ class TicketModel extends Model
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
-
-
 	}
 
+
+	public function selectAllTickets()
+	{
+		$sql = "SELECT T.ticket_id, T.user, T.matche, T.serialnumber, C.name AS Category 
+        FROM `ticket` T 
+        JOIN `matche` M 
+        ON T.matche = M.id 
+        JOIN `category` C 
+        ON T.category = C.id";
+
+		// echo $sql;
+		// exit;
+
+		$stmt = $this->connection->prepare($sql);
+
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
 }

@@ -9,6 +9,20 @@ use Carbon\Carbon;
 class Ticket extends Controller
 {
 
+
+    protected function show()
+    {
+        $ticketModel = new TicketModel();
+        $rows = $ticketModel->selectAllTickets();
+
+        // var_dump($rows);
+        // exit;
+   
+        $view = $this->getView();
+        require_once $view;
+    }
+
+
     public function showStatsOfSeates()
     {
 
@@ -46,6 +60,8 @@ class Ticket extends Controller
             if (empty(ltrim($_POST['1'], 0)) && empty(ltrim($_POST['2'], 0))  && empty(ltrim($_POST['3'], 0))) {
                 throw new InvalidInput("Number of Tickets is Required ");
             }
+
+
         } catch (Exception $e) {
 
             error_log("Invalid Input: " . $e->getMessage() . "\n", 3, "errors.log");
@@ -66,9 +82,7 @@ class Ticket extends Controller
 
         // check if match is with in 30 hours
         try {
-
             $this->isnear($matchId);
-
         } catch (TimeException $e) {
             error_log($e->getMessage() . "\n", 3, "errors.log");
             http_response_code(400);
@@ -81,8 +95,6 @@ class Ticket extends Controller
         // check availabel tickets
         $this->check_available_seats($matchId, $category_3, $category_2, $category_1);
 
-        $prefix = $matchId . $userId;
-        $serialNumber = uniqid($prefix, true);
         $number_Of_Tickets_Per_Category = array_combine([1, 2, 3], [$category_1, $category_2, $category_3]);
 
         $ticketmodel = new TicketModel();
@@ -91,6 +103,10 @@ class Ticket extends Controller
 
         foreach ($number_Of_Tickets_Per_Category as $key => $value) {
             for ($i = 0; $i < $value; $i++) {
+                
+                $prefix = $matchId . $userId;
+                $serialNumber = uniqid($prefix, true);
+
                 $data = [
                     'matche' => $matchId,
                     'user' => $userId,
@@ -120,7 +136,7 @@ class Ticket extends Controller
 
     public function isnear($matchId)
     {
-        
+
         $matchModel = new MatchesModel();
         $match =  $matchModel->selectSingleRecords('matche', "*", "id = $matchId");
         $date =  $match['date'];
@@ -143,6 +159,7 @@ class Ticket extends Controller
             $this->checkSeatAvailability('Basic', $seats['basic'], $seats['reserved_basic'], $category_3);
             $this->checkSeatAvailability('Premium', $seats['premium'], $seats['reserved_premium'], $category_2);
             $this->checkSeatAvailability('Vip', $seats['vip'], $seats['reserved_vip'], $category_1);
+            
         } catch (SeatsValidation $e) {
             $this->handleValidationException($e);
         }
