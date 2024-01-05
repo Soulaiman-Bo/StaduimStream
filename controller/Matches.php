@@ -11,8 +11,6 @@ class Matches extends Controller
         $view = $this->getView();
         require_once "$view";
     }
-    
-
     private function format_date($date_str)
     {
         $date_object = Carbon::createFromFormat('Y-m-d H:i:s', $date_str);
@@ -22,7 +20,6 @@ class Matches extends Controller
 
         return ['hour' => $hour, 'date' => $date];
     }
-
     protected function match()
     {
         $id = $_GET['id'];
@@ -36,9 +33,6 @@ class Matches extends Controller
 
             $rows['date'] = strtoupper($formatted_date['date']);
             $rows['hour'] = strtoupper($formatted_date['hour']);
-
-            // var_dump($rows);
-            // exit;
 
             if ($rows) {
                 $view = $this->getView();
@@ -54,8 +48,6 @@ class Matches extends Controller
         $view = $this->getView();
         require_once "$view";
     }
-
-
     protected function add()
     {
         $matchemodel = new MatchesModel();
@@ -78,8 +70,6 @@ class Matches extends Controller
             echo '<h1>ERROR 404: Bad Request</h1>';
         }
     }
-
-
     protected function show()
     {
         $viewmodel = new MatchesModel();
@@ -176,30 +166,5 @@ class Matches extends Controller
             ]);
         }
     }
-
-
-
-    // $viewmodel = new TeamModel();
-    // $rows = $viewmodel->selectJoin("teams");
-    // $view = $this->getView();
-    // require_once $view;
-
-    // protected function getTeamNames() {
-    //     $databaseConnection = DatabaseConnection::getInstance();
-    //     $pdo = $databaseConnection->getConnection();
-
-    //     $query = "SELECT name FROM teams";
-    //     $stmt = $pdo->prepare($query);
-    //     $stmt->execute();
-
-    //     $result = $stmt->get_result();
-    //     $teamNames = [];
-    //     while ($row = $result->fetch_assoc()) {
-    //         $teamNames[] = $row['name'];
-    //     }
-
-    //     return $teamNames;
-    // }
-
 
 }
