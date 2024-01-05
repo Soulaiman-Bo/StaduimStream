@@ -19,4 +19,25 @@ class UserModel extends Model
         return $result;
     }
 
+    function selectJoins($table, $columns = "*", $where = null)
+    {
+        $sql = "SELECT $columns FROM $table WHERE $where ";
+
+        // if ($where !== null) {
+        //     $sql .= " WHERE $where";
+        // }
+
+        $stmt = $this->connection->prepare($sql);
+
+        // Execute the prepared statement
+        $stmt->execute();
+
+        // Get the result set
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->closeConnection();
+
+        return $result;
+    }
+
 }

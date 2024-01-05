@@ -23,14 +23,14 @@
                     </div>
                     <div class="flex flex-col justify-center px-4">
                         <span class="text-base md:text-lg">
-                            <?= $_SESSION['firstname'], " ", $_SESSION['lastname'] ?>
+                            <?= $user['firstname'], " ", $user['lastname'] ?>
                         </span>
                         <span class="text-gray-400">Eastern European Time (EET), Cairo UTC +3</span>
                     </div>
                 </div>
                 <form method="post" action="http://staduimstream.test/user/deleteaction/<?php echo $user['user_ID'] ?>">
                     <div class="flex space-x-2 md:space-x-4 mt-4 md:mt-0">
-                        <button
+                        <button onclick="return confirm('Do you really want to Delete ?');"
                             class="w-1/2 md:w-[124px] px-2 md:px-4 bg-red-600 h-10 text-white rounded-md text-center leading-10"
                             type="submit">Delete</button>
                     </div>

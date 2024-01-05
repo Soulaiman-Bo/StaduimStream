@@ -111,7 +111,7 @@ class User extends Controller
 
 		if ($id !== "") {
 			$viewmodel = new UserModel();
-			$user = $viewmodel->selectSingleRecords("user", "*", "user_ID = $id");
+			$user = $viewmodel->selectSingleRecords("user");
 
 			if ($user) {
 				$view = $this->getView();
@@ -183,6 +183,8 @@ class User extends Controller
 		if ($result) {
 			$message = "user deleted successfully!";
 			http_response_code(200);
+			session_destroy();
+			header('location: /');
 			echo json_encode([
 				"message" => $message,
 				"Id" => $result
