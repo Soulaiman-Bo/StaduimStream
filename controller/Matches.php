@@ -73,7 +73,9 @@ class Matches extends Controller
     protected function show()
     {
         $viewmodel = new MatchesModel();
-        $rows = $viewmodel->selectJoin("matche");
+        // $rows = $viewmodel->selectJoin("matche");
+         $rows = $viewmodel->selectSingleMatchJoinedWithTeams1();
+
         $view = $this->getView();
         require_once "$view";
     }

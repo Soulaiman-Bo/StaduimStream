@@ -221,7 +221,7 @@
                                                 </td>
                                                 <td>
                                                     <p>
-                                                        <?= $row['stadium'] ?>
+                                                        <?= $row['stadium_name'] ?>
                                                     </p>
                                                 </td>
 
