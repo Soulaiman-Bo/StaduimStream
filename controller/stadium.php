@@ -6,54 +6,113 @@ class stadium extends Controller
 
     protected function show()
     {
-        $viewmodel = new StaduimModel();
-        $rows = $viewmodel->selectJoins("stadiums");
-        
-        $view = $this->getView();
-        require_once $view;
+
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        } else {
+
+            $viewmodel = new StaduimModel();
+            $rows = $viewmodel->selectJoins("stadiums");
+
+            $view = $this->getView();
+            require_once $view;
+        }
     }
 
     protected function update()
     {
-        $id = $_GET['id'];
 
-        if ($id !== "") {
-            $viewmodel = new StaduimModel();
-            $cities = $viewmodel->selectRecords("cities", "*");
-            $stadiums = $viewmodel->selectSingleRecordss("stadium", "*", "stadiums.id = $id");
-
-            if ($cities) {
-                $view = $this->getView();
-                require_once "$view";
-                
-            } else {
-                echo "<h1>ERROR 404: Bad Request</h1>";
-            }
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
         } else {
-            echo '<h1>ERROR 404: Page Not Found</h1>';
+
+            $id = $_GET['id'];
+
+            if ($id !== "") {
+                $viewmodel = new StaduimModel();
+                $cities = $viewmodel->selectRecords("cities", "*");
+                $stadiums = $viewmodel->selectSingleRecordss("stadium", "*", "stadiums.id = $id");
+
+                if ($cities) {
+                    $view = $this->getView();
+                    require_once "$view";
+
+                } else {
+                    echo "<h1>ERROR 404: Bad Request</h1>";
+                }
+            } else {
+                echo '<h1>ERROR 404: Page Not Found</h1>';
+            }
         }
     }
 
     protected function add()
     {
 
-        $viewmodel = new StaduimModel();
-        $rows = $viewmodel->selectJoins("stadiums");
-        $view = $this->getView();
-        require_once "$view";
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        } else {
+
+            $viewmodel = new StaduimModel();
+            $rows = $viewmodel->selectJoins("stadiums");
+            $view = $this->getView();
+            require_once "$view";
+        }
     }
 
     protected function delete()
     {
-        $id = $_GET['id'];
 
-        if ($id !== "") {
-            $stadmodel = new StaduimModel();
-            $row = $stadmodel->selectSingleRecords("stadiums", "*", "id = $id");
-            $view = $this->getView($stadmodel->Index(), false);
-            require_once "$view";
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
         } else {
-            echo '<h1>ERROR 404: Bad Request</h1>';
+
+            $id = $_GET['id'];
+
+            if ($id !== "") {
+                $stadmodel = new StaduimModel();
+                $row = $stadmodel->selectSingleRecords("stadiums", "*", "id = $id");
+                $view = $this->getView($stadmodel->Index(), false);
+                require_once "$view";
+            } else {
+                echo '<h1>ERROR 404: Bad Request</h1>';
+            }
         }
     }
 

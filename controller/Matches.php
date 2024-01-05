@@ -7,11 +7,10 @@ class Matches extends Controller
 {
     protected function index()
     {
-       
+
         $view = $this->getView();
         require_once "$view";
     }
-    
 
     private function format_date($date_str)
     {
@@ -58,34 +57,73 @@ class Matches extends Controller
 
     protected function add()
     {
-        $matchemodel = new MatchesModel();
-        $teams = $matchemodel->selectRecords("teams", "*");
-        $stadiums = $matchemodel->selectRecords("stadiums", "*");
-        $view = $this->getView();
-        require_once "$view";
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        } else {
+
+            $matchemodel = new MatchesModel();
+            $teams = $matchemodel->selectRecords("teams", "*");
+            $stadiums = $matchemodel->selectRecords("stadiums", "*");
+            $view = $this->getView();
+            require_once "$view";
+        }
     }
     protected function delete()
     {
-
-        $id = $_GET['id'];
-
-        if ($id !== "") {
-            $matchmodel = new MatchesModel();
-            $row = $matchmodel->selectSingleRecords("matche", "*", "id = $id");
-            $view = $this->getView($matchmodel->Index(), false);
-            require_once "$view";
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
         } else {
-            echo '<h1>ERROR 404: Bad Request</h1>';
+            $id = $_GET['id'];
+
+            if ($id !== "") {
+                $matchmodel = new MatchesModel();
+                $row = $matchmodel->selectSingleRecords("matche", "*", "id = $id");
+                $view = $this->getView($matchmodel->Index(), false);
+                require_once "$view";
+            } else {
+                echo '<h1>ERROR 404: Bad Request</h1>';
+            }
         }
     }
 
 
     protected function show()
     {
-        $viewmodel = new MatchesModel();
-        $rows = $viewmodel->selectJoin("matche");
-        $view = $this->getView();
-        require_once "$view";
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        } else {
+            $viewmodel = new MatchesModel();
+            $rows = $viewmodel->selectJoin("matche");
+            $view = $this->getView();
+            require_once "$view";
+        }
     }
     protected function addaction()
     {
@@ -131,23 +169,36 @@ class Matches extends Controller
     }
     protected function update()
     {
-
-        $id = $_GET['id'];
-        $matchemodel = new MatchesModel();
-        $teams = $matchemodel->selectRecords("teams", "*");
-        $stadiums = $matchemodel->selectRecords("stadiums", "*");
-        if ($id !== "") {
-            $viewmodel = new MatchesModel();
-            $rows = $viewmodel->selectSingleRecords("matche", "*", "id = $id");
-
-            if ($rows) {
-                $view = $this->getView();
-                require_once "$view";
-            } else {
-                echo "<h1>ERROR 404: Bad Request</h1>";
-            }
+        if ($_SESSION['role'] == 2) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
+        }
+        if (!isset($_SESSION['role'])) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "/ ";';
+            echo '</script>';
+            exit();
         } else {
-            echo '<h1>ERROR 404: Page Not Found</h1>';
+
+            $id = $_GET['id'];
+            $matchemodel = new MatchesModel();
+            $teams = $matchemodel->selectRecords("teams", "*");
+            $stadiums = $matchemodel->selectRecords("stadiums", "*");
+            if ($id !== "") {
+                $viewmodel = new MatchesModel();
+                $rows = $viewmodel->selectSingleRecords("matche", "*", "id = $id");
+
+                if ($rows) {
+                    $view = $this->getView();
+                    require_once "$view";
+                } else {
+                    echo "<h1>ERROR 404: Bad Request</h1>";
+                }
+            } else {
+                echo '<h1>ERROR 404: Page Not Found</h1>';
+            }
         }
     }
     protected function updateaction()
