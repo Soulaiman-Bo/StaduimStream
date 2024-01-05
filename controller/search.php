@@ -13,22 +13,22 @@ class Search extends Controller
         $staduimmodel->closeConnection();
 
 
-        $matchemodel = new SearchModel();
-        $matcherows = $matchemodel->getByTeamName("%%");
-
+        $matchemodel = new MatchesModel();
+        $matcherows = $matchemodel->selectSingleMatchJoinedWithTeams();
         $matchemodel->closeConnection();
-
        
         $view = $this->getView();
         require_once "$view";
     }
-
     public function search()
     {
 
          $id = $_GET['id'];
 
         $searchTerm = '%' . $id . '%';
+
+
+
 
         $searchmodel = new SearchModel();
 

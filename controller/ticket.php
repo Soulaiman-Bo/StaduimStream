@@ -9,16 +9,6 @@ use Carbon\Carbon;
 class Ticket extends Controller
 {
 
-    public function add()
-    {
-    }
-    public function update()
-    {
-    }
-    public function delete()
-    {
-    }
-
     public function showStatsOfSeates()
     {
 

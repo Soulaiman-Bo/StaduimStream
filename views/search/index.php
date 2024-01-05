@@ -25,11 +25,11 @@
             <p class="font-bold text-2xl text-gray-600">
               <?= $row['team_1'] ?>
             </p>
-            <img class="h-20" src="http://staduimstream.test/public/images/ivorycost.png" />
+            <img class="h-20" src="http://staduimstream.test/public/images/teams/<?= $row['team_1_logo'] ?>" />
           </div>
           <span class="font-bold text-3xl text-gray-600">VS</span>
           <div class="flex items-center gap-8">
-            <img class="h-20" src="http://staduimstream.test/public/images/guineabissau.png" />
+            <img class="h-20" src="http://staduimstream.test/public/images/teams/<?= $row['team_2_logo'] ?>" />
             <p class="font-bold text-2xl text-gray-600">
               <?= $row['team_2'] ?>
             </p>
@@ -93,11 +93,11 @@
                         <div class="flex items-center gap-8">
                           <div class="flex items-center gap-8">
                             <p class="font-bold text-2xl text-gray-600">${elm.team_1}</p>
-                            <img class="h-20" src="http://staduimstream.test/public/images/ivorycost.png" />
+                            <img class="h-20" src="http://staduimstream.test/public/images/teams/${elm.team_1_logo}" />
                           </div>
                           <span class="font-bold text-3xl text-gray-600">VS</span>
                           <div class="flex items-center gap-8">
-                            <img class="h-20" src="http://staduimstream.test/public/images/guineabissau.png" />
+                            <img class="h-20" src="http://staduimstream.test/public/images/teams/${elm.team_2_logo}" />
                             <p class="font-bold text-2xl text-gray-600">${elm.team_2}</p>
                           </div>
                         </div>
