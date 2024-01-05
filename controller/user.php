@@ -4,13 +4,27 @@ class User extends Controller
 
 	protected function signup()
 	{
-		$view = $this->getView();
-		require_once $view;
+		if (!isset($_SESSION['email'])) {
+			$view = $this->getView();
+			require_once $view;
+		}else{
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		}
 	}
 	protected function login()
 	{
+		if (!isset($_SESSION['email'])) {
 		$view = $this->getView();
 		require_once $view;
+		}else{
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		}
 	}
 
 
@@ -40,6 +54,7 @@ class User extends Controller
 			'email' => $email,
 			'phone' => $phone,
 			'password' => $hashedPassword,
+			'role' => 2,
 		];
 
 		$viewmodel->insertRecord("user", $userFields);
@@ -74,6 +89,7 @@ class User extends Controller
 					$_SESSION['cin'] = $user['cin'];
 					$_SESSION['phone'] = $user['phone'];
 					$_SESSION['rolename'] = $user['role'];
+					$_SESSION['role'] = $user['role'];
 
 					if ($_SESSION['rolename'] == 1) {
 						header("Location: /dashboard");
@@ -127,32 +143,36 @@ class User extends Controller
 
 	protected function updateaction()
 	{
-		extract($_POST);
-		$viewmodel = new UserModel();
+		if (isset($_SESSION['email'])) {
+			extract($_POST);
+			$viewmodel = new UserModel();
 
 
-		$id = $_GET['id'];
+			$id = $_GET['id'];
 
 
-		$userfield = array(
-			'firstname' => $firstname,
-			'lastname' => $lastname,
-			'cin' => $cin,
-			'email' => $email,
-			'phone' => $phone,
-			'password' => $password
-		);
+			$userfield = array(
+				'firstname' => $firstname,
+				'lastname' => $lastname,
+				'cin' => $cin,
+				'email' => $email,
+				'phone' => $phone,
+				'password' => $password
+			);
 
-		$insertedId = $viewmodel->updateRecord("user", $userfield, "user_ID", $id);
-		$viewmodel->closeConnection();
+			$insertedId = $viewmodel->updateRecord("user", $userfield, "user_ID", $id);
+			$viewmodel->closeConnection();
 
-		if ($insertedId) {
-			$message = "user Updated successfully!";
-			http_response_code(200);
-			echo json_encode([
-				"message" => $message,
-				"id" => $insertedId
-			]);
+			if ($insertedId) {
+				$message = "user Updated successfully!";
+				http_response_code(200);
+				echo json_encode([
+					"message" => $message,
+					"id" => $insertedId
+				]);
+			}
+		} else {
+			header("Location: /");
 		}
 	}
 

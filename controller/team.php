@@ -5,50 +5,81 @@ class Team extends Controller
 {
 	protected function show()
 	{
-		$viewmodel = new TeamModel();
-		$rows = $viewmodel->selectJoin("teams");
-		$view = $this->getView();
-		require_once $view;
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		} else {
+			$viewmodel = new TeamModel();
+			$rows = $viewmodel->selectJoin("teams");
+			$view = $this->getView();
+			require_once $view;
+		}
 	}
 
 	protected function update()
 	{
-		$id = $_GET['id'];
 
-		if ($id !== "") {
-			$viewmodel = new TeamModel();
-			$rows = $viewmodel->selectSingleRecords("teams", "*", "id = $id");
-
-			if ($rows) {
-				$view = $this->getView();
-				require_once "$view";
-			} else {
-				echo "<h1>ERROR 404: Bad Request</h1>";
-			}
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
 		} else {
-			echo '<h1>ERROR 404: Page Not Found</h1>';
+
+			$id = $_GET['id'];
+
+			if ($id !== "") {
+				$viewmodel = new TeamModel();
+				$rows = $viewmodel->selectSingleRecords("teams", "*", "id = $id");
+
+				if ($rows) {
+					$view = $this->getView();
+					require_once "$view";
+				} else {
+					echo "<h1>ERROR 404: Bad Request</h1>";
+				}
+			} else {
+				echo '<h1>ERROR 404: Page Not Found</h1>';
+			}
 		}
 	}
 
 	protected function add()
 	{
 
-		$viewmodel = new TeamModel();
-		$view = $this->getView();
-		require_once "$view";
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		} else {
+
+			$viewmodel = new TeamModel();
+			$view = $this->getView();
+			require_once "$view";
+		}
 	}
 
 	protected function delete()
 	{
-		$id = $_GET['id'];
-
-		if ($id !== "") {
-			$teammodel = new TeamModel();
-			$row = $teammodel->selectSingleRecords("teams", "*", "id = $id");
-			$view = $this->getView($teammodel->Index(), false);
-			require_once "$view";
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
 		} else {
-			echo '<h1>ERROR 404: Bad Request</h1>';
+			$id = $_GET['id'];
+
+			if ($id !== "") {
+				$teammodel = new TeamModel();
+				$row = $teammodel->selectSingleRecords("teams", "*", "id = $id");
+				$view = $this->getView($teammodel->Index(), false);
+				require_once "$view";
+			} else {
+				echo '<h1>ERROR 404: Bad Request</h1>';
+			}
 		}
 	}
 
