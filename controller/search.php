@@ -15,8 +15,7 @@ class Search extends Controller
 
         $matchemodel = new SearchModel();
         $matcherows = $matchemodel->getByTeamName("%%");
-        // var_dump($matcherows) ;
-        // exit;
+
         $matchemodel->closeConnection();
 
        

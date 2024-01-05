@@ -7,10 +7,10 @@
     <div>
       <ul class="flex gap-10">
         <li class="font-bold text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">About</a>
+          <a href="/" class="cursor-pointer">Home</a>
         </li>
         <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Tickets</a>
+          <a href="/search" class="cursor-pointer">Matchs</a>
         </li>
         <li class="font-normal text-lg text-gray-600">
           <a href="http://staduimstream.test/Contact/" class="cursor-pointer">Contact</a>
@@ -36,7 +36,7 @@
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><?php ?>Dashboard</a>
           </li> -->
           <li>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">profile</a>
+            <a href="/profile/show" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">profile</a>
           </li>
           <li>
             <a href="/user/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
