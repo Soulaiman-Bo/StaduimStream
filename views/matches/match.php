@@ -11,40 +11,10 @@
 </head>
 
 <body>
-  <nav class="h-28 flex justify-between items-center mx-auto max-w-[90%]">
-    <div>
-      <img src="http://staduimstream.test/public/images/logo.png" />
-    </div>
 
-    <div>
-      <ul class="flex gap-10">
-        <li class="font-bold text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">About</a>
-        </li>
-        <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Tickets</a>
-        </li>
-        <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Contact</a>
-        </li>
-      </ul>
-    </div>
 
-    <div class="flex gap-6">
-      <a href="/" class="flex gap-4 items-center cursor-pointer">
-        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.0417 7.74996C14.0417 11.3168 11.1502 14.2083 7.58333 14.2083C4.01649 14.2083 1.125 11.3168 1.125 7.74996C1.125 4.18312 4.01649 1.29163 7.58333 1.29163C11.1502 1.29163 14.0417 4.18312 14.0417 7.74996Z" stroke="#6D8493" stroke-width="1.25" />
-          <path d="M13 12.7499L15.5 15.2499" stroke="#6D8493" stroke-width="1.25" stroke-linecap="round" />
-        </svg>
+  <?php require_once "views/includes/header.php"; ?>
 
-        <span class="text-lg">Login</span>
-      </a>
-
-      <a href="/" class="cursor-pointer">
-        <span class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900">Sign up</span>
-      </a>
-    </div>
-  </nav>
 
   <section class="heroBackrround h-[481px] bg-green-800">
 
@@ -52,11 +22,13 @@
     <div class="flex justify-around p-5" style="color: white; width: 100%; height: 481px">
       <div class="flex items-center gap-3 text-2xl">
         <span><?= $rows['team_1'] ?></span>
-        <img class="h-24" src="http://staduimstream.test/public/images/Mali.png" alt="Ivory cost" />
+
+        <img class="h-24" src="http://staduimstream.test/public/images/teams/<?= $rows['team_1_logo'] ?>" alt="Ivory cost" />
       </div>
 
 
       <div class="flex flex-col items-center justify-center gap-1">
+        <span id="forjs" class=" hidden text-xl"><?= $rows['date'] ?> <?= $rows['hour'] ?></span>
         <span class="text-xl"><?= $rows['date'] ?></span>
         <span class="border-4 p-5 text-5xl mb-10"><?= $rows['hour'] ?></span>
         <span class="text-xl">African Cup Of Nations</span>
@@ -65,7 +37,7 @@
 
 
       <div class="flex items-center gap-3 text-2xl">
-        <img class="h-24" src="http://staduimstream.test/public/images/Guinée-Bissau.png " alt=" Guinea-Bissau" />
+        <img class="h-24" src="http://staduimstream.test/public/images/teams/<?= $rows['team_2_logo'] ?>" alt=" Guinea-Bissau" />
         <span><?= $rows['team_2'] ?></span>
       </div>
     </div>
@@ -81,7 +53,7 @@
           background: #fff;
           box-shadow: 0px 4px 19px 0px rgba(0, 0, 0, 0.14);
         ">
-      <div style="
+      <div id="timeToMatch" style="
             text-align: center;
             vertical-align: middle;
             line-height: 90px;
@@ -90,8 +62,9 @@
             font-weight: 700;
             letter-spacing: -0.44px;
           " class="m-2">
-        19 : 08 : 58 : 42
+
       </div>
+
       <div class="flex justify-center gap-8" style="
             position: relative;
             bottom: 30%;
@@ -104,6 +77,7 @@
         <span> Minutes</span>
         <span>Seconds</span>
       </div>
+
     </div>
 
 
@@ -242,6 +216,38 @@
 
   <script>
     let buyTicketForm = document.getElementById("buyTicketForm");
+    let timeToMatch = document.getElementById("timeToMatch");
+    let forjs = document.getElementById("forjs");
+
+
+    function updateDateDifference(inputDateTime, callback) {
+      function displayUpdatedDifference() {
+
+        const inputDate = new Date(inputDateTime);
+        const currentDate = new Date();
+        const timeDifference = inputDate.getTime() - currentDate.getTime();
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        const formattedResult = `${days} : ${hours} : ${minutes} : ${seconds}`;
+
+        callback(formattedResult);
+      }
+      displayUpdatedDifference();
+      setInterval(displayUpdatedDifference, 1000);
+    }
+
+    const inputDateTime = forjs.innerHTML;
+
+    function handleResult(result) {
+      timeToMatch.innerHTML = result;
+    }
+
+    updateDateDifference(inputDateTime, handleResult);
+
 
     buyTicketForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -281,8 +287,6 @@
 
 
     })
-
-  
   </script>
 
 </body>
