@@ -10,43 +10,9 @@
 </head>
 
 <body>
-  <nav class=" h-28 flex justify-between items-center mx-auto max-w-[90%]">
-    <div>
-      <img src="http://staduimstream.test/public/images/logo.png" />
-    </div>
+  <?php include 'views/includes/header.php' ?>
 
-    <div>
-      <ul class="flex gap-10">
-        <li class="font-bold text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">About</a>
-        </li>
-        <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Tickets</a>
-        </li>
-        <li class="font-normal text-lg text-gray-600">
-          <a href="/" class="cursor-pointer">Contact</a>
-        </li>
-      </ul>
-    </div>
 
-    <div class="flex gap-6">
-      <a href="/" class="flex gap-4 items-center cursor-pointer">
-        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M14.0417 7.74996C14.0417 11.3168 11.1502 14.2083 7.58333 14.2083C4.01649 14.2083 1.125 11.3168 1.125 7.74996C1.125 4.18312 4.01649 1.29163 7.58333 1.29163C11.1502 1.29163 14.0417 4.18312 14.0417 7.74996Z"
-            stroke="#6D8493" stroke-width="1.25" />
-          <path d="M13 12.7499L15.5 15.2499" stroke="#6D8493" stroke-width="1.25" stroke-linecap="round" />
-        </svg>
-
-        <span class="text-lg">Login</span>
-      </a>
-
-      <a href="/" class="cursor-pointer">
-        <span class="h-10 w-24 flex items-center justify-center rounded-3xl text-gray-100 text-lg bg-green-900">Sign
-          up</span>
-      </a>
-    </div>
-  </nav>
   <section class="backgroundImage">
     <img class="w-full" src="../../public/images/landingpage.svg" alt="">
   </section>
@@ -54,7 +20,29 @@
     <h2 class="font-bold text-lg text-gray-600  mb-2 mt-4">Upcoming Matchs</h2>
     <div class="swiper">
       <div class=" swiper-wrapper">
-        <div class="swiper-slide">
+        <?php foreach($matchs as $match): ?>
+        <a class="swiper-slide" href="http://staduimstream.test/matches/match/<?=  $match['id'] ?>">
+        
+          <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+            <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
+            <div class="px-6 py-4 flex gap-10">
+              <div class="flex flex-col justify-center">
+                <span>Nov</span>
+              <span><?=  $match['date'] ?></span>
+              </div>
+              <div class="flex flex-col ">
+              <span><?= $match['team_1'] ?></span> vs <?= $match['team_2'] ?>
+                <!-- <span>$150</span>
+                <span>Ahmed ben Ali stadium</span> -->
+              </div>
+
+            </div>
+
+          </div>
+          
+        </a>
+        <?php endforeach; ?>
+        <!-- <div class="swiper-slide">
           <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
             <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
             <div class="px-6 py-4 flex gap-10">
@@ -124,25 +112,7 @@
 
             </div>
 
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
-            <img class="w-full" src="http://staduimstream.test/public/images/vs.svg" alt="cote d'Ivoir vs Guinée">
-            <div class="px-6 py-4 flex gap-10">
-              <div class="flex flex-col justify-center">
-                <span>Nov</span>
-                <span>23</span>
-              </div>
-              <div class="flex flex-col ">
-                <span class="font-bold text-s ">cote d'Ivoir vs Guinée</span>
-                <span>$150</span>
-                <span>Ahmed ben Ali stadium</span>
-              </div>
-
-            </div>
-
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -156,7 +126,6 @@
       <div class="flex flex-wrap flex-col gap-10">
         <div class="flex flex-wrap gap-10 justify-center">
           <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-
             <div class="px-6 py-4 " style="background-color: white; width: 18rem; height: 18rem;">
               <div class="font-bold text-xl mb-2 text-center">Group A</div>
               <div class="flex items-center gap-4">
@@ -471,103 +440,27 @@
     <h2 class="font-bold text-lg text-gray-600 mb-2 mt-4" style="padding-top: 4rem;padding-left: 4rem;">BILLETTERIE
       ENTRÉE PAR STADE</h2>
     <div class="flex flex-wrap justify-around">
-      <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st1.svg" alt="stade Alassane">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex '>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
-              ABIDJAN</span>
+      <?php foreach ($rows as $row): ?>
+        <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500" style="width:42rem;">
+          <div>
+            <img class="w-full" src="../../<?= $row['link']; ?>" alt="stade Alassane">
           </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
-        </div>
-      </div>
-      <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st2.svg" alt="STADE LA PAIX - BOUAKÉ">
-        </div>
-        <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
+          <div class="flex gap-4 py-4 pb-4 justify-between items-center">
+            <div class='flex '>
+              <img class="px-4" src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
+              <span class='flex items-center'>
+                <?= $row['Name']; ?> -
+                <?= $row['Address']; ?>
+              </span>
+            </div>
+            <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
+              More Info
+            </a>
           </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
         </div>
-
-      </div>
+      <?php endforeach; ?>
     </div>
-    <div class="flex flex-wrap justify-around">
-      <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st3.svg" alt="stade Alassane">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
-              ABIDJAN</span>
-          </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
-        </div>
-      </div>
-      <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div class='flex'>
-          <img class="w-full" src="../../public/images/st4.svg" alt="STADE LA PAIX - BOUAKÉ">
-        </div>
-        <div class="flex flex-wrap gap-4 py-4 pb-4 justify-between items-center">
-          <div class=flex>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> LA PAIX - BOUAKÉ</span>
-          </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
-        </div>
-
-      </div>
-    </div>
-    <div class="flex flex-wrap justify-around">
-      <div class="rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st5.svg" alt="stade Alassane">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class='flex'>
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;">STADE </span> ALASSANE OUATTARA D’EBIMPE -
-              ABIDJAN</span>
-          </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
-        </div>
-      </div>
-      <div class=" rounded overflow-hidden shadow-lg m-4 hover:shadow-orange-500 ">
-        <div>
-          <img class="w-full" src="../../public/images/st6.svg" alt="STADE LA PAIX - BOUAKÉ">
-        </div>
-        <div class="flex gap-4 py-4 pb-4 justify-between items-center">
-          <div class="flex">
-            <img src="../../public/images/stademini.svg" alt="STADE ALASSANE OUATTARA D’EBIMPE - ABIDJAN">
-            <span class='flex pl-4 items-center'><span style="color:#EB7107;" class='font-bold'>STADE </span> LA PAIX -
-              BOUAKÉ</span>
-          </div>
-          <a class="bg-DDD  text-white font-bold py-2 px-4 rounded m-4 cursor-pointer">
-            More Info
-          </a>
-        </div>
-
-      </div>
-    </div>
-    <?php require_once('views/includes/footer.php') ?>
+    <?php require('views/includes/footer.php') ?>
   </section>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>

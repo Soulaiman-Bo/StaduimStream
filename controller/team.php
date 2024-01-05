@@ -5,62 +5,92 @@ class Team extends Controller
 {
 	protected function show()
 	{
-		$viewmodel = new TeamModel();
-		$rows = $viewmodel->selectRecords("teams");
-		$view = $this->getView();
-		require_once $view;
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		} else {
+			$viewmodel = new TeamModel();
+			$rows = $viewmodel->selectJoin("teams");
+			$view = $this->getView();
+			require_once $view;
+		}
 	}
-	
+
 	protected function update()
 	{
-		$id = $_GET['id'];
 
-		if ($id !== "") {
-			$viewmodel = new TeamModel();
-			$rows = $viewmodel->selectSingleRecords("teams", "*", "team_id = $id");
-
-			if ($rows) {
-				$view = $this->getView();
-				require_once "$view";
-			} else {
-				echo "<h1>ERROR 404: Bad Request</h1>";
-			}
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
 		} else {
-			echo '<h1>ERROR 404: Page Not Found</h1>';
+
+			$id = $_GET['id'];
+
+			if ($id !== "") {
+				$viewmodel = new TeamModel();
+				$rows = $viewmodel->selectSingleRecords("teams", "*", "id = $id");
+
+				if ($rows) {
+					$view = $this->getView();
+					require_once "$view";
+				} else {
+					echo "<h1>ERROR 404: Bad Request</h1>";
+				}
+			} else {
+				echo '<h1>ERROR 404: Page Not Found</h1>';
+			}
 		}
 	}
 
 	protected function add()
 	{
 
-		$viewmodel = new TeamModel();
-		$view = $this->getView();
-		require_once "$view";
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
+		} else {
+
+			$viewmodel = new TeamModel();
+			$view = $this->getView();
+			require_once "$view";
+		}
 	}
 
 	protected function delete()
 	{
-		$id = $_GET['id'];
-
-		if ($id !== "") {
-			$teammodel = new TeamModel();
-			$row = $teammodel->selectSingleRecords("teams", "*", "team_id = $id");
-			$view = $this->getView($teammodel->Index(), false);
-			require_once "$view";
+		if ($_SESSION['role'] == 2) {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href = "/ ";';
+			echo '</script>';
+			exit();
 		} else {
-			echo '<h1>ERROR 404: Bad Request</h1>';
+			$id = $_GET['id'];
+
+			if ($id !== "") {
+				$teammodel = new TeamModel();
+				$row = $teammodel->selectSingleRecords("teams", "*", "id = $id");
+				$view = $this->getView($teammodel->Index(), false);
+				require_once "$view";
+			} else {
+				echo '<h1>ERROR 404: Bad Request</h1>';
+			}
 		}
 	}
-	
+
 	protected function addaction()
 	{
-
 		extract($_POST);
 
-		$new_logo_url;
+		$new_logo;
 
-		if (isset($_FILES["logo_url"])) {
-			$file = $_FILES["logo_url"];
+		if (isset($_FILES["logo"])) {
+			$file = $_FILES["logo"];
 			// File properties
 			$fileName = $file["name"];
 			$fileTmpName = $file["tmp_name"];
@@ -70,10 +100,10 @@ class Team extends Controller
 			$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
 
 			// Generate a unique filename to avoid overwriting
-			$newFileName = $team_name .  "_" . uniqid('', true) . "." . $fileExt;
+			$newFileName = $name . "_" . uniqid('', true) . "." . $fileExt;
 
 
-			$new_logo_url = $newFileName;
+			$new_logo = $newFileName;
 
 			$uploadDir = "public/uploads/";
 
@@ -85,22 +115,19 @@ class Team extends Controller
 		}
 
 		$viewmodel = new TeamModel();
+		$lastInsertedImageId = $viewmodel->insertRecord("images", ['link' => $new_logo]);
+
 		$teamfields = array(
-			'team_name' => $team_name,
-			'founded_year' => $founded_year,
-			'country_name' => $country_name,
-			'stadium_name' => $stadium_name,
-			'stadium_capacity' => $stadium_capacity,
-			'logo_url' => $new_logo_url,
-			'website_url' => $website_url,
-			'league_name' => $league_name,
-			'division' => $division,
-			'current_manager' => $current_manager
+
+			'name' => $name,
+			'manager' => $manager,
+			'logo' => $lastInsertedImageId,
+
 		);
 
-
-
 		$insertedId = $viewmodel->insertRecord("teams", $teamfields);
+
+		$viewmodel->closeConnection();
 
 		if ($insertedId) {
 			$message = "Team inserted successfully!";
@@ -117,29 +144,22 @@ class Team extends Controller
 		extract($_POST);
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
 		$teamfields = array(
-			'team_name' => $team_name,
-			'founded_year' => $founded_year,
-			'country_name' => $country_name,
-			'stadium_name' => $stadium_name,
-			'stadium_capacity' => $stadium_capacity,
-			//'logo_url' => $logo_url, 
-			'website_url' => $website_url,
-			'league_name' => $league_name,
-			'division' => $division,
-			'current_manager' => $current_manager
+			'name' => $name,
+			'manager' => $manager
 		);
 
-		$insertedId = $viewmodel->updateRecord("teams", $teamfields, $id);
+		$insertedId = $viewmodel->updateRecord("teams", $teamfields, "id", $id);
+		$viewmodel->closeConnection();
 
 		if ($insertedId) {
 			$message = "Team Updated successfully!";
 			http_response_code(200);
 			echo json_encode([
 				"message" => $message,
-				"Id" => $insertedId
+				"id" => $insertedId
 			]);
 		}
 	}
@@ -150,9 +170,9 @@ class Team extends Controller
 
 		$viewmodel = new TeamModel();
 
-		$id = $_POST['team_id'];
+		$id = $_POST['id'];
 
-		$result = $viewmodel->deleteRecord("teams", "team_id", $id);
+		$result = $viewmodel->deleteRecord("teams", "id", $id);
 
 		if ($result) {
 			$message = "Team deleted successfully!";

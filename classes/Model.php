@@ -1,15 +1,17 @@
 <?php
 
+require_once "DatabaseConnection.php";
+
 abstract class Model
 {
-	protected $pdo;
+	protected $connection;
 	protected $stmt;
 
 	public function __construct()
 	{
-		$this->pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+		$dbInstance = DatabaseConnection::getInstance();
+		$this->connection = $dbInstance->getConnection();
 	}
-
 
 	function insertRecord($table, $data)
 	{
@@ -20,14 +22,14 @@ abstract class Model
 
 			$sql = "INSERT INTO $table ($columns) VALUES ($values)";
 
-			$stmt = $this->pdo->prepare($sql);
+			$stmt = $this->connection->prepare($sql);
 
 			// Bind parameters directly, no need to specify types
 			$stmt->execute(array_values($data));
 
 			// Get the last inserted ID (if applicable)
-			$lastInsertId = $this->pdo->lastInsertId();
-			$this->pdo = null;
+			$lastInsertId = $this->connection->lastInsertId();
+			
 
 			return $lastInsertId;
 		} catch (PDOException $e) {
@@ -38,6 +40,7 @@ abstract class Model
 		}
 	}
 
+
 	function selectRecords($table, $columns = "*", $where = null)
 	{
 		// Use prepared statements to prevent SQL injection
@@ -47,7 +50,7 @@ abstract class Model
 			$sql .= " WHERE $where";
 		}
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 
 		// Execute the prepared statement
 		$stmt->execute();
@@ -56,11 +59,6 @@ abstract class Model
 		// $result = $stmt->fetchAll();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-
-		// Close the statement
-		$this->pdo = null;
 
 		return $result;
 	}
@@ -74,7 +72,7 @@ abstract class Model
 			$sql .= " WHERE $where ;";
 		}
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 
 		// Execute the prepared statement
 		$stmt->execute();
@@ -84,27 +82,22 @@ abstract class Model
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		// Close the statement
-		$this->pdo = null;
 
 		return $result;
 	}
 
-	function updateRecord($table, $data, $id)
+	function updateRecord($table, $data, $column, $id)
 	{
 		$args = array();
 		foreach ($data as $key => $value) {
 			$args[] = "$key = ?";
 		}
 
-		$sql = "UPDATE $table SET " . implode(',', $args) . " WHERE team_id = $id";
+		$sql = "UPDATE $table SET " . implode(',', $args) . " WHERE $column = $id";
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 
 		$result = $stmt->execute(array_values($data));
-
-		$lastInsertId = $this->pdo->lastInsertId();
-
-		$this->pdo = null;
 
 		return $result;
 	}
@@ -114,11 +107,10 @@ abstract class Model
 		// Use prepared statements to prevent SQL injection
 		$sql = "DELETE FROM $table WHERE $column = $id";
 
-		$stmt = $this->pdo->prepare($sql);
+		$stmt = $this->connection->prepare($sql);
 
 		$result = $stmt->execute();
 
-		$this->pdo = null;
 
 		return $result;
 	}
@@ -126,7 +118,12 @@ abstract class Model
 	
 	public function query($query)
 	{
-		$this->stmt = $this->pdo->prepare($query);
+		$this->stmt = $this->connection->prepare($query);
+	}
+
+	
+	public function  closeConnection(){
+		$this->connection = null;
 	}
 
 	public function bind($param, $value, $type = null)
@@ -174,6 +171,6 @@ abstract class Model
 
 	public function lastInsertId()
 	{
-		return $this->pdo->lastInsertId();
+		return $this->connection->lastInsertId();
 	}
 }

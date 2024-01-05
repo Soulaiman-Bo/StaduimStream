@@ -2,18 +2,18 @@
 
 class Profile extends Controller
 {
-    public function show()
+    protected function show()
     {
-        
-        $view = $this->getView();
+        if (isset($_SESSION['email'])) {
+            $id = $_SESSION['user_id'];
+            $viewmodel = new UserModel();
+            $rows = $viewmodel->selectJoins("user", "*", "user_ID = $id");
 
-        require_once "$view";
+            $view = $this->getView();
+            require_once $view;
+        }else{
+            header("Location: /");
+        }
     }
-    public function edit()
-    {
-        
-        $view = $this->getView();
 
-        require_once "$view";
-    }
 }
